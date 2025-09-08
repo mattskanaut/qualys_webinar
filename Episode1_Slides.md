@@ -1,6 +1,6 @@
 # Episode 1: Demystifying the CNAPP - Slide Content
 
-## SLIDE 1: Title & Agenda
+## SLIDE 0A: Title & Agenda
 
 **Title:** "Demystifying the CNAPP"
 **Subtitle:** "Applying Vulnerability Management in the Cloud"
@@ -15,75 +15,97 @@
 
 ---
 
-## SLIDE 2: Traditional vs Cloud Best Practice
+## SLIDE 1A: Modern Security Implementation vs Legacy Methods
 
-**Title:** What does 'security best practice' actually mean in a cloud-native world?
+**Title:** "What does 'security best practice' actually mean today?"
 
-**Traditional Best Practice:**
-• Patch Monthly
-• Scan Quarterly
-• Update Firewalls
-• Annual Review
-• Static Compliance
+**Left Side - Legacy Methods: Static, Manual, Periodic**
+📋 Manual checklist approach
+• Quarterly vulnerability scans
+• Annual policy reviews
+• Manual configuration checks
+• Human-scale administration
+• Reactive incident response
+• Point-in-time compliance
 
-**Cloud Best Practice:**
-• Continuous Validation
-• Real-time Response
-• Automated Enforcement
-• Always Adapting
-• Continuous Adaptation
+**Right Side - Modern Implementation: Dynamic, Automated, Continuous**
+🔄 Continuous verification loops
+• Real-time monitoring & validation
+• Policy as code
+• Automated configuration management
+• Programmatic control at scale
+• Proactive threat prevention
+• Continuous compliance
 
-**Key Message:** "The Paradigm Shift"
-**Analogy:** "Security guard vs. smart building"
+**Foundation:** NIST Cybersecurity Framework & SP 800-53 controls remain constant
+**What Changed:** Our ability to implement them effectively at cloud scale and speed
 
----
-
-## SLIDE 3: Capital One - Traditional vs Cloud Best Practices
-
-**Title:** "Capital One: The Cost of Cloud Misconfigurations
-
-**What They Had (Traditional):**
-✓ WAF deployed for perimeter security
-✓ Security tools and monitoring
-✓ Compliance certifications  
-✓ Incident response team
-✓ Regular vulnerability scanning
-
-**What They Missed (Cloud-Native):**
-✗ Continuous validation (config drifted for months)
-✗ Zero trust (trusted the WAF too much)
-✗ Automated enforcement (no IMDSv2)
-✗ Least privilege (over-permissioned IAM)
-✗ Defense in depth (no network segmentation)
-
-**Impact:** "100M records exposed"
-**Key Insight:** "Not sophisticated hacking - configuration drift and over-privileged access"
+**Key Implementation Shift:**
+FROM: Manual, periodic validation
+TO: Continuous, automated verification
 
 ---
 
-## SLIDE 4: Capital One Attack Path with Prevention Points
+## SLIDE 1B: Capital One Breach - Legacy Methods Failed Modern Infrastructure
 
-**Title:** "How Cloud Best Practices Would Have Prevented It"
+**Title:** "Capital One 2019: 100M+ Customers Compromised"
 
-**Attack Flow:**
-1. WAF Misconfiguration →
-2. SSRF Attack → 
-3. Metadata Service → 
-4. IAM Credentials → 
-5. 100M Records
+**WAF Misconfiguration**
+Web application firewall allowed SSRF attacks through improper configuration.
+**Prevention:** Continuous monitoring (NIST SI-4) would catch WAF misconfigurations in minutes, not months.
 
-**Prevention Points:**
-- "Continuous Validation" → Would catch WAF misconfig in minutes
-- "Zero Trust" → IMDSv2 enforced by default
-- "Automated Enforcement" → Auto-remediate over-privileged roles
-- "Least Privilege" → WAF gets minimal permissions only
-- "Defense in Depth" → Network segmentation prevents lateral movement
+**SSRF Attack & Metadata Service Exploit**
+Attacker accessed AWS metadata service (169.254.169.254) to retrieve credentials.
+**Prevention:** Zero trust verification (NIST AC-3) with IMDSv2 enforced by default would prevent credential access.
 
-**Bottom Message:** "This wasn't sophisticated hacking - it was a failure to apply cloud-native thinking"
+**Over-Permissioned IAM**
+IAM role had excessive permissions, allowing access to multiple S3 buckets.
+**Prevention:** Automated enforcement (NIST AC-2) would auto-remediate over-privileged roles and apply least privilege principles.
+
+**106 Million Records Exposed**
+Small misconfigurations created a highway to sensitive customer data.
+**Prevention:** Defense in depth (NIST SC-7) with network segmentation would prevent lateral movement, limiting blast radius.
+
+**Key Insight:** This wasn't sophisticated hacking - it was a failure to apply modern implementation methods to timeless security principles.
+
+**The Fix:** Same NIST 800-53 controls, implemented with continuous automation instead of periodic manual processes.
 
 ---
 
-## SLIDE 5: Question 2 - CNAPP
+## SLIDE 1C: AWS Security Design Principles - Scale Makes Them Essential
+
+**Title:** "Seven Principles for Modern Security Implementation"
+
+**AWS Well-Architected Security Pillar Design Principles:**
+
+**1. Implement a strong identity foundation**
+• Least privilege by default, centralized identity management, eliminate static credentials
+
+**2. Maintain traceability**  
+• Real-time monitoring, automated alerting, integrated log collection and response
+
+**3. Apply security at all layers**
+• Defense in depth across network, compute, application, and data layers
+
+**4. Automate security best practices**
+• Security as code, version-controlled templates, automated scaling of security controls
+
+**5. Protect data in transit and at rest**
+• Classification-based protection, encryption, tokenization, granular access controls
+
+**6. Keep people away from data**
+• Reduce direct access, eliminate manual processing, automated data handling
+
+**7. Prepare for security events**
+• Incident response automation, simulation exercises, rapid detection and recovery
+
+**Core Message:** These aren't cloud-specific - they're what good security looks like when you can finally implement it properly
+
+**The Scale Factor:** Cloud infrastructure makes these principles essential, not optional
+
+---
+
+## SLIDE 2A: Question 2 - CNAPP
 
 **Question:** "CNAPP: The final boss of acronyms?"
 **Sub-question:** "What problem does it solve?"
@@ -100,9 +122,9 @@
 
 ---
 
-## SLIDE 6: Uber Breach + CNAPP Solution
+## SLIDE 2B: Uber Breach + CNAPP Solution
 
-**Title:** "Uber 2016: When Tools Don't Talk
+**Title:** "Uber 2016: When Tools Don't Talk"
 
 **Tool Blind Spots:**
 - GitHub (credentials) ← "Scanner missed private repo"
@@ -127,7 +149,7 @@ Same CVE in different contexts:
 
 ---
 
-## SLIDE 7: CNAPP Platform Visualization
+## SLIDE 2C: CNAPP Platform Visualization
 
 **Title:** "CNAPP: Comprehensive Cloud Security in One Platform"
 
@@ -154,7 +176,7 @@ Same CVE in different contexts:
 
 ---
 
-## SLIDE 8: The Power of Context
+## SLIDE 2D: The Power of Context
 
 **Title:** "Context Changes Everything: Same Vulnerability, Different Risk"
 
@@ -175,7 +197,7 @@ Same CVE in different contexts:
 
 ---
 
-## SLIDE 9: Question 3 - Cloud VM Challenges
+## SLIDE 3A: Question 3 - Cloud VM Challenges
 
 **Question:** "Why is VM harder in the cloud?"
 
@@ -191,7 +213,7 @@ Same CVE in different contexts:
 
 ---
 
-## SLIDE 10: Equifax Breach - Cloud Migration Failure
+## SLIDE 3B: Equifax Breach - Cloud Migration Failure
 
 **Title:** "Equifax 2017: When Cloud Migration Broke Vulnerability Management"
 
@@ -226,22 +248,25 @@ Same CVE in different contexts:
 
 ---
 
-## SLIDE 11: Cloud VM Visibility Gap Matrix
+## SLIDE 3C: Velocity vs Security Dilemma
 
-**Title:** "What Different Scanning Approaches Actually See in Cloud"
+**Title:** "The Fundamental Math That Breaks Traditional Vulnerability Management"
 
-**Visibility Matrix:**
-|                    | Agent | Network | API-Based |
-|--------------------|-------|---------|-----------|
-| Long-lived VMs     | ✓     | ✓       | ✓         |
-| Auto-scaling VMs   | ~     | ✗       | ✓         |
-| Containers         | ~     | ✗       | ✓         |
-| Serverless         | ✗     | ✗       | ✓         |
-| PaaS Services      | ✗     | ✗       | ✓         |
+**Velocity Mismatch Visualization:**
+• **Infrastructure Deploy:** 5 minutes
+• **Vulnerability Scan:** 3 days to complete
+• **Security Review Process:** 3 weeks
+• **Quarterly Compliance Audit:** 3 months
 
-**Key Stat:** "If you're only using agents, you're blind to 60% of cloud infrastructure"
+**Real World Example:**
+"We spin up 500 new containers every hour during peak traffic. Our vulnerability scan runs once a week and takes 12 hours to complete. We're literally scanning infrastructure that no longer exists."
 
-**Expert Insight:** "Equifax's traditional scanners were agent-based. They never saw the cloud instances that mattered most."
+**The Equifax Connection:**
+"Their quarterly scan cycle was perfect for servers that lived for years. But when they moved to auto-scaling groups that created new instances every few minutes, those quarterly scans became completely irrelevant."
+
+**Key Insight:** "Traditional security cadence was designed for static infrastructure. When your infrastructure velocity is measured in minutes, your security velocity must match - or you're always fighting yesterday's war."
+
+**The Solution:** "Continuous automated validation that moves at infrastructure speed."
 
 ---
 

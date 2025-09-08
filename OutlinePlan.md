@@ -62,107 +62,96 @@ Two-part webinar series designed to educate security professionals on cloud-nati
 ## 🎯 QUESTION 1
 ### "What does 'security best practice' actually mean in a cloud-native world?"
 
-**Target time**: 8 minutes  
+**Target time**: 6 minutes  
 **Breach story**: Capital One (2019)  
 **Engagement**: Poll on shared responsibility understanding
 
 ---
 
 ### 🎤 HOST OPENING (30 seconds)
-"Let's start with the phrase everyone uses but nobody defines - 'security best practice.' I know we're often asked by our customers to help them follow best practice. But here's the thing - in cloud, the old best practices can actually make you LESS secure. So what does best practice actually mean now?"
+"Let's start with the phrase everyone uses but nobody defines - 'security best practice.' Here's the thing - in cloud, the old best practices can actually make you LESS secure. So what does best practice actually mean now?"
 
 ---
 
-**BEAT 1: The Paradigm Shift** (Expert - 2 minutes)
-*[SLIDE 2: Traditional vs Cloud Best Practice comparison - static split screen]*
+**BEAT 1: The Paradigm Shift** (Expert - 1.5 minutes)
+*[SLIDE 1B: Traditional vs Cloud Security Paradigm - split screen visual]*
 
-"Great question. In traditional IT, best practice was a checklist - patch monthly, scan quarterly, update firewall rules. But in cloud, by the time you've finished your checklist, your entire infrastructure has changed three times.
+"Thanks Dave for the introduction and thank you for the first question to kick us off.
 
-So cloud best practice isn't about following a list - it's about building systems that secure themselves. It's the difference between manually checking every door is locked versus having doors that automatically lock and alert you if someone tries to force them.
+I'd like to challenge the entire premise of the question, I don't think that cloud security is fundamentally different to what we should be doing on prem and that much of the talk around changes in security practice when moving to the cloud have much more to do with changes in our technology landscape and our approaches to security in general, than they do with our deployment methods.
 
-Best practice has shifted from static compliance to continuous adaptation."
+So perhaps a better way to think of this is what does our current best thinking look like today.
 
-*Beginner layer*: "Imagine trying to guard a building where the doors and windows keep moving."
+Personally, I direct anyone who is interested in studying this topic to read NIST CSF.  I know, hardly bed time reading, but it lays out very clearly and approach to security that serves us equally well in all domains.
 
-*Intermediate layer*: "That Azure VM you scanned yesterday? It's gone. Replaced by three containers that weren't there this morning."
+NIST Special Publication 800-53 provides the security controls that implement the CSF functions - and notice how these controls don't change based on where you deploy them. Whether it's AC-3 (Access Enforcement) or SI-4 (System Monitoring), the fundamental security objectives remain constant.
 
-*Expert nugget*: "This means policy-as-code, immutable infrastructure, and event-driven security responses"
+What HAS changed isn't the principles - it's our ability to implement them effectively.
 
-**BEAT 2: The Five Cloud-Native Best Practices** (Expert - 2 minutes)
-*[SLIDE 3: The 5 Cloud-Native Best Practices - numbered list with icons]*
+The real shift is from static, manual security practices to dynamic, automated ones. From periodic validation to continuous verification. From human-scale administration to programmatic control.
 
-"So what ARE the actual best practices for cloud? There are five core principles:
+Capital One's breach wasn't caused by cloud deployment - it was caused by applying yesterday's implementation patterns to today's infrastructure capabilities. They had excellent perimeter security but failed at continuous configuration validation and least-privilege access - both timeless security principles."
 
-1. Continuous Monitoring & Validation - Not scanning quarterly, but validating every change in real-time
-2. Identity First and Zero Trust - Never trust, always verify - especially identities  
-3. Policy-Driven Automated Enforcement - Humans can't keep up with cloud speed, automation must
-4. Shift Security Left - Build security into the code and infrastructure, not bolt it on after
-5. Context-Based Prioritization - Not all risks are equal - understand exposure and blast radius
+*Expert insight*: "Cloud didn't create new security problems - it exposed how inadequate our old implementation methods were at scale and speed."
 
-Think of it like switching from a security guard who checks doors once a night to a smart building that monitors and responds 24/7."
+*For beginners*: "Think of it like the difference between manually checking every door in a building once a week versus having smart locks that verify every access attempt in real-time."
 
-*For beginners*: "Think of it like switching from a security guard who checks doors once a night to a smart building that monitors and responds 24/7"
+*For intermediate practitioners*: "The same defense-in-depth principles apply, but now we can implement them with Infrastructure as Code, API-driven monitoring, and event-driven responses."
 
-*For experts*: "This means policy-as-code, immutable infrastructure, and event-driven security responses"
+*Advanced perspective*: "What we call 'cloud-native security' is really just modern security engineering - policy as code, immutable infrastructure, and zero-trust architecture work equally well in private data centers."
 
-**BEAT 2: Capital One Breach Story** (Expert - 2 minutes)
-*[SLIDE 4: Capital One - Traditional vs Cloud Best Practices comparison chart]*
-
-"Let me show you why this matters. Capital One followed traditional best practices perfectly. They had a WAF deployed for perimeter security, security tools and monitoring, compliance certifications, an incident response team, and regular vulnerability scanning.
-
-But they missed the cloud-native best practices. No continuous validation - their config drifted over months. They trusted the WAF instead of using zero trust. No automated enforcement - IMDSv2 wasn't enforced. Over-permissioned IAM role instead of least privilege. No defense in depth or network segmentation.
-
-*Expert detail*: "Here's exactly what happened: The attacker - a former AWS employee named Paige Thompson - discovered that Capital One's Web Application Firewall was misconfigured to allow Server-Side Request Forgery (SSRF) attacks. She crafted malicious requests that forced the WAF to make internal calls to AWS's metadata service at 169.254.169.254. This metadata service contained temporary AWS credentials that the WAF instance was using. The WAF's IAM role had been given overly broad permissions including access to S3 buckets containing customer data. Using these stolen credentials, Thompson systematically enumerated and downloaded over 700 folders of data from S3, including credit applications, Social Security numbers, and bank account details. The attack persisted for months because there was no anomaly detection flagging the unusual data access patterns."
-
-They had every traditional security control but missed the cloud-native ones. The result? Not sophisticated hacking, but configuration drift and over-privileged access."
+**BEAT 2: Capital One Breach - Why Old Methods Failed Modern Infrastructure** (Expert - 2.5 minutes)
+*[SLIDE 2B: Capital One Breach - Old Methods Failed Modern Infrastructure]*
 
 #### 📊 Breach Context: Capital One (2019)
-- **Date**: March-July 2019 (disclosed July 29, 2019)
 - **Scale**: 100 million US customers, 6 million Canadian customers affected
-- **Impact**: 140,000 Social Security numbers, 80,000 bank account numbers exposed
-- **Attacker**: Former AWS employee who knew the systems
 - **Method**: SSRF attack through misconfigured WAF to access metadata service
+- **Impact**: $700M+ in fines, congressional hearings, CEO resignation
 
-*The lesson*: "Every piece was a 'small' misconfiguration. Together, they created a highway to customer data."
+"Capital One followed traditional best practices PERFECTLY. Look what they had:"
+- WAF for perimeter security ✓
+- Security monitoring tools ✓  
+- Compliance certifications ✓
+- Incident response team ✓
+- Regular vulnerability scanning ✓
 
-*Expert insight*: "Notice the metadata service attack vector - that's why IMDSv2 enforcement is now critical."
+"But they missed every cloud-native essential:"
+- ❌ Configuration drifted over months (no continuous validation)
+- ❌ Trusted the WAF instead of zero trust
+- ❌ Over-permissioned IAM role (not least privilege)  
+- ❌ No automated enforcement (IMDSv2 not enforced)
 
-**BEAT 4: How Cloud Best Practices Would Have Prevented It** (Expert - 1.5 minutes)
-*[SLIDE 5: Capital One attack path with prevention points highlighted]*
+*Attack path*: "Former AWS employee exploited SSRF in misconfigured WAF → accessed metadata service → stole temporary credentials → used over-privileged IAM role → downloaded 700+ folders from S3."
 
-"Here's exactly how cloud-native best practices would have stopped this:
+"100+ million customers compromised because traditional security thinking met cloud infrastructure."
 
-Continuous Validation would have caught the WAF misconfiguration within minutes, not months. Zero Trust architecture wouldn't let the metadata service trust the WAF by default - IMDSv2 would be enforced. Automated Enforcement would auto-remediate over-privileged IAM roles before they could be exploited. Least Privilege means the WAF role would only have minimal required permissions. Defense in Depth with network segmentation would prevent lateral movement.
+*Beginner insight*: "Think of it like having perfect locks on your front door, but leaving the back door wide open because you didn't know it existed."
 
-This wasn't a sophisticated attack - it was a failure to apply cloud-native thinking to cloud infrastructure."
+*Intermediate detail*: "The SSRF attack forced the WAF to make calls to AWS metadata service at 169.254.169.254 - a cloud-specific attack vector traditional scanners miss."
 
-**What Actually Went Wrong:**
-- Overly permissive IAM role attached to WAF instance
-- WAF misconfiguration allowing SSRF attacks
-- S3 buckets accessible with the compromised credentials
-- No network segmentation between WAF and sensitive data storage
-- Lack of anomaly detection for unusual S3 access patterns
+*Expert analysis*: "IMDSv2 enforcement would have blocked this entirely. This is why cloud-native security controls aren't optional - they're foundational."
 
-*Key insight*: "This wasn't a sophisticated attack - it was a failure to apply cloud-native thinking to cloud infrastructure"
+**BEAT 3: AWS Security Design Principles - Modern Implementation** (Expert - 1.5 minutes)  
+*[SLIDE 2C: AWS Security Design Principles - Scale Makes Them Essential]*
 
-**BEAT 5: The New Framework** (Expert - 1 minute)
-*[SLIDE 6: FROM → TO framework transitions]*
+"So what does modern security implementation actually look like? AWS has documented seven security design principles that perfectly capture this shift from manual to automated, periodic to continuous.
 
-"So here's your new framework for cloud security best practice. We need to shift FROM periodic scanning TO continuous validation, FROM manual review TO automated enforcement, FROM perimeter defense TO zero trust architecture, FROM compliance checklists TO risk-based prioritization, FROM patching vulnerabilities TO preventing misconfigurations.
+The brilliance of these principles isn't that they're new - it's that they show how cloud scale makes timeless security concepts absolutely essential. Take 'implement a strong identity foundation' - we've always known identity matters, but at cloud scale, you simply cannot manage access with spreadsheets. You need centralized identity, least privilege by default, and automated provisioning.
 
-Quick wins to start today - if you're just getting started, enable cloud-native security services like Defender for Cloud or GuardDuty. If you're more advanced, implement policy-as-code for automated governance. And if you're really pushing the envelope, build event-driven remediation pipelines."
+Or look at 'maintain traceability' - we've always wanted good logging, but when your infrastructure changes every few minutes, real-time monitoring isn't nice-to-have, it's survival. Same with 'automate security best practices' - we used to think automation was for efficiency. Now we realize it's the only way to maintain security at scale.
 
-**FROM → TO:**
-- Periodic scanning → Continuous validation
-- Manual review → Automated enforcement
-- Perimeter defense → Zero trust architecture
-- Compliance checklists → Risk-based prioritization
-- Patching vulnerabilities → Preventing misconfigurations
+And here's my favorite - 'keep people away from data.' This sounds radical, but it's really just the natural evolution of separation of duties. When you have thousands of resources spinning up and down, human access becomes your biggest risk."
 
-Quick wins for everyone:
-- Beginners: "Enable cloud-native security services (Defender, GuardDuty)"
-- Intermediate: "Implement policy-as-code for automated governance"
-- Advanced: "Build event-driven remediation pipelines"
+"These principles aren't cloud-specific - they're what good security looks like when you can finally implement it properly."
+
+*For beginners*: "Start with strong identity and automation - get MFA everywhere and let code manage your configurations."
+
+*For intermediate practitioners*: "Focus on traceability and defense in depth - if you can't see what's happening in real-time, you're flying blind."
+
+*For experts*: "Embrace the 'keep people away from data' principle - build systems that operate securely without human intervention."
+
+**BEAT 4: Quick Wins** (Expert - 30 seconds)
+"Start today: Enable cloud-native security services like GuardDuty or Defender. Implement MFA everywhere. Scan for public resources. The future is automated, continuous, and identity-centric."
 
 **ENGAGEMENT BREAK** (Host - 30 seconds)
 *[POLL: "Which traditional best practice causes the most cloud problems?"]*
@@ -200,7 +189,7 @@ Quick wins for everyone:
 #### Beat Structure:
 
 **BEAT 1: The Tool Sprawl Problem** (Expert - 1.5 minutes)
-*[SLIDE 5 - Build 2: Dashboard chaos - browser tabs multiply to show 15+ tools]*
+*[SLIDE 2A - CNAPP: The Final Boss of Acronyms?]*
 
 "Here's what most teams are dealing with across their multi-cloud environments:"
 - SIEM for logs (different for each cloud)
@@ -219,7 +208,7 @@ Quick wins for everyone:
 *Expert insight*: "And the real killer? Each tool has its own risk scoring. A 'critical' in one tool might be 'medium' in another. Try explaining that to a developer who needs to ship code."
 
 **BEAT 2: The Uber Breach - Death by Fragmentation** (Expert - 2 minutes)
-*[SLIDE 6 - Uber 2016: When Tools Don't Talk
+*[SLIDE 2B - Uber 2016: When Tools Don't Talk]*
 
 #### 📊 Breach Context: Uber (2016)
 - **Date**: October-November 2016 (disclosed November 2017)
@@ -272,7 +261,7 @@ Quick wins for everyone:
 - Each tool had partial visibility - none saw the full picture
 
 **BEAT 3: What CNAPP Actually Is** (Expert - 1.5 minutes)
-*[SLIDE 7 - Transitions to CNAPP platform visualization - unified dashboard]*
+*[SLIDE 2C - CNAPP: Comprehensive Cloud Security in One Platform]*
 
 "CNAPP addresses the pressing demand for contemporary cloud security solutions. But here's the key - it's not just bundling tools together. CNAPP unifies vulnerability management, compliance, and threat detection into one platform that breaks down communication gaps between security and development teams."
 
@@ -289,7 +278,7 @@ Quick wins for everyone:
 *Expert nugget*: "CNAPP consolidates critical indicators from diverse sources into cohesive, actionable insights with a singular, prioritized view of cloud risk. The automation helps accelerate risk reduction - transforming risk mitigation from a reactive process to an efficient and proactive operation. Most importantly, it gives developers and security teams a common language for faster remediation."
 
 **BEAT 4: The Power of Context** (Expert - 1.5 minutes)
-*[SLIDE 8 - Build 3: Same CVE, different risk scores based on context]*
+*[SLIDE 2D - Context Changes Everything: Same Vulnerability, Different Risk]*
 
 "Here's the same vulnerability in three places:"
 1. Dev environment, internal only = Low risk
@@ -326,7 +315,7 @@ Watch the numbers roll in - "Wow, seeing lots of 10+ here..."
 #### Beat Structure:
 
 **BEAT 1: The Speed Problem** (Expert - 2 minutes)
-*[SLIDE 9 - Container lifecycle bars animate showing shrinking lifespans]*
+*[SLIDE 3A - Why Is Vulnerability Management Harder in Cloud?]*
 
 "Your traditional scanner runs at 2 AM. By 2:15 AM, half your infrastructure is different."
 
@@ -343,7 +332,7 @@ Watch the numbers roll in - "Wow, seeing lots of 10+ here..."
 *Expert insight*: "Auto-scaling means vulnerabilities multiply instantly. One vulnerable image becomes 100 vulnerable instances in minutes."
 
 **BEAT 2: Equifax - When Cloud Migration Broke Everything** (Expert - 2.5 minutes)
-*[SLIDE 10 - Equifax breach timeline with cloud context]*
+*[SLIDE 3B - Equifax breach timeline with cloud context]*
 
 #### 📊 Breach Context: Equifax (2017)
 - **Date**: May-July 2017 (disclosed September 2017)
@@ -387,36 +376,23 @@ Watch the numbers roll in - "Wow, seeing lots of 10+ here..."
 - No context-aware risk scoring for internet-facing vs internal assets
 - Traditional network monitoring missed cloud-native attack patterns
 
-**BEAT 3: The Visibility Gap Matrix** (Expert - 1.5 minutes)
-*[SLIDE 11 - Visibility gap matrix with cloud services]*
+**BEAT 3: The Velocity vs Security Dilemma** (Expert - 1.5 minutes)
+*[SLIDE 3C - Velocity mismatch visualization - infrastructure speed vs security speed]*
 
-"Here's what different scanning approaches actually see in cloud:"
+"Here's the fundamental math that breaks traditional vulnerability management:
 
-|                    | Agent | Network | API-Based |
-|--------------------|-------|---------|-----------|
-| Long-lived VMs     | ✓     | ✓       | ✓         |
-| Auto-scaling VMs   | ~     | ✗       | ✓         |
-| Containers         | ~     | ✗       | ✓         |
-| Serverless         | ✗     | ✗       | ✓         |
-| PaaS Services      | ✗     | ✗       | ✓         |
+Your developers deploy infrastructure in 5 minutes. Your vulnerability scanner takes 3 days to complete. Your security review process takes 3 weeks. Your quarterly compliance audit takes 3 months.
 
-"If you're only using agents, you're blind to 60% of cloud infrastructure."
+By the time security finds the problem, that infrastructure has been deployed, modified, and replaced hundreds of times."
 
-*Expert insight*: "Equifax's traditional scanners were agent-based. They never saw the cloud instances that mattered most."
+*Real world example*: "One customer told me: 'We spin up 500 new containers every hour during peak traffic. Our vulnerability scan runs once a week and takes 12 hours to complete. We're literally scanning infrastructure that no longer exists.'"
 
-**BEAT 4: Context Changes Everything** (Expert - 1.5 minutes)
-*[SLIDE 12 - Same vulnerability, different risk contexts]*
+"This is exactly what happened to Equifax. Their quarterly scan cycle was perfect for servers that lived for years. But when they moved to auto-scaling groups that created new instances every few minutes, those quarterly scans became completely irrelevant."
 
-"The same Apache Struts vulnerability in different contexts:"
-1. Internal dev environment: LOW risk - not internet-facing
-2. Corporate intranet: MEDIUM risk - behind VPN
-3. Customer-facing portal (like Equifax): CRITICAL - internet exposure + PII data
+*Expert insight*: "Traditional security cadence was designed for static infrastructure. When your infrastructure velocity is measured in minutes, your security velocity must match - or you're always fighting yesterday's war."
 
-"Cloud VM isn't just about finding vulnerabilities - it's about understanding exposure and blast radius."
+"The solution isn't faster humans - it's continuous automated validation that moves at infrastructure speed."
 
-*Advanced concept*: "Equifax's mistake: treating an internet-facing customer portal the same as an internal system."
-
-**BEAT 5: The Continuous Solution** (Expert - 30 seconds)
 "The answer? Shift from periodic scanning to continuous visibility. API-based discovery, real-time risk assessment, context-aware prioritization."
 
 **ENGAGEMENT BREAK** (Host - 30 seconds)
@@ -447,7 +423,7 @@ Watch the numbers roll in - "Wow, seeing lots of 10+ here..."
 #### Beat Structure:
 
 **BEAT 1: The Multi-Cloud Inventory Problem** (Expert - 1.5 minutes)
-*[SLIDE 13 - Build 2: Auto-discovery visualization - web of resources spreads across cloud providers]*
+*[SLIDE 4A - Build 2: Auto-discovery visualization - web of resources spreads across cloud providers]*
 
 "Multi-cloud makes resource visibility exponentially harder:"
 - Launch one EC2 instance in AWS
@@ -461,60 +437,65 @@ Watch the numbers roll in - "Wow, seeing lots of 10+ here..."
 
 *Reality check*: "Average enterprise has 40% 'shadow' resources they don't know about - and that's BEFORE you add multi-cloud complexity."
 
-**BEAT 2: SolarWinds - The Ultimate Visibility Failure** (Expert - 2 minutes)
-*[SLIDE 10 - Build 1: SolarWinds attack chain - supply chain focus]*
+**BEAT 2: Toyota - The Unknown Asset Problem** (Expert - 2 minutes)
+*[SLIDE 4B - Toyota 2023: When Visibility Gaps Hide in Plain Sight]*
 
-#### 📊 Breach Context: SolarWinds (2020)
-- **Date**: March-December 2020 (disclosed December 13, 2020)
-- **Scale**: 18,000 orgs downloaded backdoored updates
-- **Attacker**: Nation-state actors (suspected Russia)
-- **Method**: Compromised build pipeline → signed malicious updates
-- **Dwell Time**: 9+ months undetected
+#### 📊 Breach Context: Toyota (2023)
+- **Date**: Exposed for 10 years (discovered May 2023)
+- **Scale**: Location data for 2+ million customers
+- **Method**: Misconfigured cloud database left publicly accessible
+- **Detection**: External security researchers, not Toyota
+- **Duration**: Nearly a decade of unknown exposure
 
-"SolarWinds taught us that visibility isn't just about your resources:"
+"Toyota 2023 shows what happens when you don't know what you have:"
 
-*The chain*:
-1. Compromised build system (not visible)
-2. Malicious update (signed, trusted)
-3. 18,000 organizations affected
-4. Cloud resources compromised via trusted path
+*The visibility failure*:
+1. Cloud database created years ago
+2. Default settings made it publicly accessible
+3. No asset inventory included this system
+4. No automated discovery was scanning for public resources
+5. Ran for 10 years completely unknown to security teams
+6. Only discovered when researchers found it in internet scans
 
-"Your vulnerability scanners saw nothing wrong. The attack came through trust."
+"2 million customer records exposed for a decade because Toyota didn't know this database existed."
 
 **What Went Wrong:**
-- Build environment compromised (weak password "solarwinds123")
-- Code signing certificates used to sign malicious code
-- Supply chain trust exploited
-- Sophisticated hiding of command & control traffic
-- Months of undetected presence in build systems
+- No comprehensive cloud asset inventory
+- Legacy systems missed during cloud migration tracking
+- No continuous discovery of publicly accessible resources
+- Traditional vulnerability scanners weren't configured for this database type
+- Asset management processes didn't scale with cloud expansion
 
-*Key insight*: "Cloud risk includes your supply chain - every container image, every marketplace AMI, every third-party integration"
+*Key insight*: "You can't protect what you don't know exists - and in multi-cloud environments, unknown assets are everywhere"
 
-**BEAT 3: Building Real Visibility** (Expert - 2 minutes)
-*[SLIDE 10 - Build 2: Risk visibility pyramid builds layer by layer]*
+**BEAT 3: Modern Visibility Platforms - From Reactive to Proactive** (Expert - 2 minutes)
+*[SLIDE 4C - Modern Platform Capabilities vs Traditional Approaches]*
 
-"True visibility requires multiple layers:"
+"After Toyota, the question isn't 'how do we find unknown assets' - it's 'how do we prevent them from becoming unknown in the first place?'"
 
-Foundation: Asset inventory (what exists)
-Layer 2: Configuration state (how it's configured)
-Layer 3: Vulnerability data (what's vulnerable)
-Layer 4: Identity context (who can access)
-Layer 5: Network exposure (what's reachable)
-Layer 6: Data classification (what's at risk)
-Top: Attack paths (how it connects)
+**Traditional Approach (Toyota's Problem):**
+- Manual asset inventories that get outdated
+- Periodic scans that miss new resources  
+- Siloed tools that don't talk to each other
+- Reactive discovery after breaches
 
-"Most teams stop at layer 2. Real risk lives at layer 7."
+**Modern Platform Approach:**
+- Continuous automated asset discovery across all cloud providers
+- Real-time configuration monitoring that catches changes in minutes
+- Unified visibility that correlates assets, vulnerabilities, and exposure
+- Proactive risk scoring that prioritizes what matters most
 
-**BEAT 4: Attack Path Visualization** (Expert - 1 minute)
-*[SLIDE 10 - Build 3: Attack path traces through the pyramid]*
+"Here's what modern platforms give you that Toyota didn't have:"
 
-"When you connect all the dots:"
-Internet → Load Balancer → Web App (CVE) → IAM Role → Database → Customer Data
+1. **Comprehensive Discovery**: APIs continuously scan AWS, Azure, GCP for new resources
+2. **Configuration Monitoring**: Alert the moment something becomes publicly accessible  
+3. **Attack Surface Management**: Map every internet-facing asset and its risk exposure
+4. **Risk Prioritization**: Focus on the toxic combinations that actually matter
 
-"Now you know which CVE to patch first."
+*Expert insight*: "The Toyota database would have been discovered in the first scan and flagged as critical within minutes - not hidden for 10 years."
 
-**BEAT 5: Automation Is Non-Optional** (Expert - 30 seconds)
-"Manual visibility in cloud is impossible. You need APIs, automation, continuous discovery."
+**BEAT 4: From Unknown to Managed** (Expert - 30 seconds)
+"The goal isn't perfect visibility - it's continuous visibility. Know what you have, understand its risk, and prioritize what to fix first."
 
 **ENGAGEMENT BREAK** (Host - 30 seconds)
 *[INTERACTIVE on SLIDE 10: Architecture diagram appears]*
@@ -1144,80 +1125,80 @@ Risk = (CVSS × Exploitability × Exposure × Blast Radius) / Compensating Contr
 
 #### Episode 1 Slides:
 
-**SLIDE 1: Title & Agenda**
+**SLIDE 1A: Title & Agenda**
 - Opening title with series branding
 - Builds to show 5 questions as roadmap
 - Single slide, multiple builds
 
-**SLIDE 2: Question 1 - Best Practice**
-- Question appears
-- Transitions to show rapid elasticity concept
-- Adds traditional vs cloud comparison
+**SLIDE 1B: Traditional vs Cloud Security Paradigm**
+- Split screen visual: Castle fortress with walls and guards (left) vs interconnected cloud of resources with identity badges floating between them (right)
+- Text overlay builds: "FROM: Keep attackers out of the data center" → "TO: Never trust, always verify every access"
+- Progressive build showing shared responsibility dividing line
+- Visual metaphor reinforces the fundamental mindset shift from perimeter to identity-centric security
 
-**SLIDE 3: Capital One Breach Story**
-- Timeline appears first
-- Attack path builds step by step (WAF → SSRF → IAM → S3)
-- "What went wrong" bullets appear
-- Single slide tells whole story through builds
+**SLIDE 1C: Capital One Breach - Traditional Security Failed**
+- Left side shows "What they had" with checkmarks: WAF, monitoring tools, compliance certifications, incident response team, vulnerability scanning
+- Right side shows "What they missed" with X marks: continuous validation, zero trust, least privilege, automated enforcement
+- Center shows attack timeline: SSRF → metadata service → stolen credentials → S3 data access
+- Bottom text: "100+ million customers compromised because traditional security thinking met cloud infrastructure"
 
-**SLIDE 4: Shared Responsibility + Identity**
-- Shared responsibility model
-- Morphs to show misconceptions
-- Transitions to identity as perimeter concept
-- One slide, three concepts through animation
+**SLIDE 1D: The Cloud Security Framework**
+- Circular diagram with 7 cloud security domains arranged around "Cloud Security" center: Identity & Zero Trust, Data Protection, IaC Security, Continuous Monitoring, Resilience & Automation, Shared Responsibility, Auto-remediation
+- Bottom section shows key FROM→TO transitions: Periodic→Continuous, Manual→Automated, Perimeter→Identity
+- Color coding connects traditional failures to modern cloud solutions
 
-**SLIDE 5: Question 2 - CNAPP**
+**SLIDE 2A: Question 2 - CNAPP**
 - Question appears
 - Builds to show tool sprawl (browser tabs multiply)
 - Can add tool logos/names progressively
 
-**SLIDE 6: Uber Breach + CNAPP Solution**
+**SLIDE 2B: Uber Breach + CNAPP Solution**
 - Uber attack path with tool gaps
 - Transitions to CNAPP unified platform
 - Shows correlation power
 - One slide shows problem → solution
 
-**SLIDE 7: Question 3 - Cloud VM Challenges**
+**SLIDE 3A: Question 3 - Cloud VM Challenges**
 - Question appears
 - Container lifecycle bars animate (shrinking timescales)
 - Adds visibility gap matrix as overlay
 
-**SLIDE 8: Tesla Breach + Context**
-- Tesla Kubernetes exposure story
+**SLIDE 3B: Equifax Breach + Context**
+- Equifax cloud migration vulnerability management failure story
 - Transitions to risk-in-context examples
 - Same CVE, different risks based on context
 
-**SLIDE 9: Question 4 - Visibility**
+**SLIDE 4A: Question 4 - Visibility**
 - Question appears
 - Auto-discovery web spreads
 - Adds resource dependencies
 
-**SLIDE 10: SolarWinds + Risk Pyramid**
+**SLIDE 4B: SolarWinds + Risk Pyramid**
 - Supply chain attack visualization
 - Builds to risk visibility pyramid
 - Shows attack paths at the top
 
-**SLIDE 11: Question 5 - Where to Start**
+**SLIDE 5A: Question 5 - Where to Start**
 - Question appears
 - 30-60-90 day roadmap builds
 - Quick wins appear as checklist
 
-**SLIDE 12: Success Story**
+**SLIDE 5B: Success Story**
 - Before/after metrics
 - Animated transition showing improvement
 - Key lesson appears
 
-**SLIDE 13: Key Takeaways**
+**SLIDE 5C: Key Takeaways**
 - Four main points build
 - Icons and text appear together
 - Final thought overlays
 
-**SLIDE 14: Next Steps**
+**SLIDE 5D: Next Steps**
 - Episode 2 preview
 - Resources and links
 - Demo booking info
 
-**SLIDE 15: Thank You + Q&A**
+**SLIDE 5E: Thank You + Q&A**
 - Simple closing
 - Contact information
 - Q&A prompt
