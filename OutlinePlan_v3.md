@@ -1,7 +1,7 @@
 # Qualys Cloud Security Webinar Series - Episode 1 (Revised)
 ## "Demystifying the CNAPP: Vulnerability Management in the Cloud"
 
-**Duration:** 30 minutes total (26.5 minutes content + 3.5 minutes flexible Q&A)
+**Duration:** 30 minutes total (25.5 minutes content + 4.5 minutes flexible Q&A)
 **Objective:** Foundation setting - make cloud VM approachable while revealing CNAPP integration value
 
 ---
@@ -111,13 +111,14 @@ These principles aren't cloud-specific - they're what good security looks like w
 *[5-second transition pause]*
 
 ### ENGAGEMENT BREAK (Host - 20 seconds)
-**[POLL: "Which traditional best practice causes the most cloud problems?"]**
-- Quarterly vulnerability scans
-- Perimeter-focused security
-- Manual security reviews
-- Compliance-first mindset
+**[POLL: "What's your biggest cloud security headache today?"]**
+- Shadow IT (unknown resources, particularly in cloud)
+- Configuration drift over time
+- Too many disconnected security tools
+- No clear view of my security posture
+- Long remediation times
 
-"Interesting to see the mix of responses there. The reality is they all cause problems when applied without cloud-native thinking."
+"Great mix of responses - and notice how these are all problems that traditional security approaches struggle with. These are exactly the gaps that modern security engineering tries to address."
 
 *[10-second pause for question transition]*
 
@@ -207,375 +208,191 @@ These principles aren't cloud-specific - they're what good security looks like w
 *[10-second pause for question transition]*
 
 ## 🎯 QUESTION 3
-**"How do CNAPPs give visibility across multi-cloud environments?"**
+**"How do CNAPPs transform security operations from reactive to proactive?"**
 
-**Target time:** 4.5 minutes
-**Breach story:** Toyota (2023) - Unknown asset exposure
-**Engagement:** Interactive cloud asset discovery challenge
-**Slide:** Reuse SLIDE 4A - Multi-cloud inventory visualization
+**Target time:** 6 minutes
+**Success story:** Before/after CNAPP operational transformation
+**Engagement:** Alert fatigue vs workflow efficiency comparison
+**Slide:** New SLIDE 3A - Alert chaos vs unified workflow
 
-### 🎤 HOST OPENING (12 seconds)
-"Here's a scary question I ask every customer: 'Can you tell me every internet-facing asset you have across AWS, Azure, and GCP right now?' The silence is usually deafening."
+### 🎤 HOST OPENING (15 seconds)
+"Here's a question that keeps security teams up at night: 'How do you move from drowning in alerts to actually preventing problems?' Today's security teams get 11,000 alerts per day on average. That's not security - that's noise."
 
 *[5-second pause for transition]*
 
 ### Beat Structure:
 
-#### BEAT 1: The Multi-Cloud Discovery Challenge (Expert - 1.5 minutes)
-**[SLIDE 4A: Multi-Cloud Inventory Problem - reuse existing]**
+#### BEAT 1: The Alert Fatigue Crisis (Expert - 2 minutes)
+**[SLIDE 3A: Alert Chaos vs CNAPP Workflow - new slide needed]**
 
-"Multi-cloud makes resource visibility exponentially harder:"
+"Let me paint you a picture of what modern security operations actually looks like. Your CSPM tool generates 2,500 misconfiguration alerts. Your vulnerability scanner finds 8,000 issues across your three cloud environments. Your SIEM throws another 500 threat indicators at you. Add in CloudTrail logs, container security alerts, and identity anomalies, and you're looking at what Forrester research confirms - north of 11,000 alerts per day (Forrester analysis, 2024) fighting for your attention.
 
-**AWS creates:** EC2, ENI, security groups, EBS volumes, ALB, Route53 entries
-**Azure equivalent:** VMs, NICs, NSGs, managed disks, Load Balancer, DNS zones
-**GCP parallel:** Compute Engine, VPC, firewall rules, persistent disks, Cloud Load Balancing, Cloud DNS
+Here's what happens next - and I bet this sounds familiar. An alert arrives, your security team starts investigating. But to understand the real impact, they have to switch between five different tools to gather context. While they're trying to figure out how to prioritize this finding without unified risk scoring, ten new alerts have already arrived. By the time they respond to the original alert, they're already behind. This cycle repeats until your team burns out and real threats slip through the cracks.
 
-"That's 7+ resources from one action, times three cloud providers, times your dev teams."
-
-**The API challenge:**
-- Different authentication methods per cloud
-- Different resource naming conventions
-- Different permissions models
-- Different service endpoints
-
-**Reality check:** "Average enterprise has 40% 'shadow' resources they don't know about - and that's BEFORE you add multi-cloud complexity."
-
-**For beginners:** "If this sounds overwhelming, start with one cloud account. Master AWS visibility before adding Azure and GCP to the mix."
-
-**For intermediate practitioners:** "You probably know this pain - each cloud has different APIs, permissions models, and naming conventions. Look for tools that normalize this complexity."
-
-**Advanced perspective:** "Consider the resource dependency mapping capabilities. It's not enough to find resources - you need to understand how they relate to each other and impact business processes."
+The numbers tell the story. According to recent research, 83% of IT security professionals admit that burnout has led to errors resulting in security breaches, with 85% wanting to leave their roles entirely (Devo, 2024). When we look at cloud alerts specifically, 23% remain completely uninvestigated due to sheer volume and complexity (2024 cloud security studies). And perhaps most telling - breaches involving stolen credentials take an average of 292 days to identify and contain (IBM Cost of Data Breach Report, 2024). That's nearly ten months of an attacker having free run of your environment.
 
 *[5-second transition pause]*
 
-#### BEAT 2: Toyota - The Decade-Long Blind Spot (Expert - 1.5 minutes)
-**[SLIDE 4B: Toyota 2023 - reuse existing slide]**
+#### BEAT 2: CNAPP Workflow Transformation (Expert - 2.5 minutes)
+**[SLIDE 3B: Unified CNAPP Operations Dashboard - new slide needed]**
 
-📊 **Breach Context: Toyota (2023)**
-- **Duration:** Exposed for 10 years (discovered May 2023)
-- **Scale:** Location data for 2+ million customers
-- **Method:** Misconfigured cloud database left publicly accessible
-- **Detection:** External security researchers, not Toyota
+"So how does CNAPP solve this operational nightmare? It transforms your security workflow through three fundamental changes.
 
-"Toyota shows what happens when you don't know what you have:"
+First, automated asset discovery replaces manual inventory nightmares. Instead of quarterly spreadsheet updates that are outdated the moment you finish them, CNAPP continuously maps your environment through real-time API polling across AWS, Azure, and GCP. New resources are detected within minutes, not months. Dependency mapping shows you how systems actually connect - because that EC2 instance that just spun up might have direct access to your customer database. You finally get a single source of truth for 'what do we actually have running out there?' Remember, Gartner tells us that shadow IT accounts for 30-40% of IT spending in large enterprises (Gartner research), so if you think you know everything in your environment, you're probably missing nearly half of it.
 
-**The visibility failure cascade:**
-1. Cloud database created during migration
-2. Default settings made it publicly accessible
-3. No asset inventory included this system
-4. No automated discovery scanning for public resources
-5. Ran for 10 years completely unknown to security teams
-6. Only discovered when researchers found it in internet scans
+Second, contextual risk scoring replaces the CVSS lottery. Instead of treating every vulnerability scanner alert the same, CNAPP provides business-context scoring that combines vulnerability data with actual exposure and real business impact. Those 11,000 alerts suddenly become 50 prioritized actions that actually matter. Your developers get clear guidance - 'Fix this first because it's internet-facing and connects to payment data' - rather than generic vulnerability numbers. Your security team can finally focus on what will actually reduce risk instead of chasing every alert.
 
-"2 million customer records exposed for a decade because Toyota didn't know this database existed."
+Third, integrated remediation eliminates the tool-hopping investigation dance. Instead of logging into five different systems to understand what's happening, CNAPP provides unified workflows where a single dashboard shows you the full attack context. Low-risk findings get remediated automatically. Infrastructure fixes can generate pull requests directly. Everything integrates with your existing ITSM for proper tracking.
+
+Let me show you what this looks like in practice. The traditional workflow: Alert appears in CSPM, you log into your vulnerability scanner, check SIEM logs, manually correlate the data, create a ticket, wait for development to get around to it, then manually verify the fix worked. Time to resolution: two to three weeks. The CNAPP workflow: Risk-prioritized notification appears with full context in a single view, automated fix suggestion provided, one-click remediation or guided workflow initiated. Time to resolution: two to three hours.
+
+For those new to security operations, think of it like having a smart assistant that filters your email, prioritizes what's important, and even drafts responses for you. CNAPP does this for security alerts. If you're already managing security operations, the key shift is moving from alert-driven to risk-driven work. Instead of responding to individual findings, you're managing a unified risk posture. For advanced practitioners, look for platforms that can orchestrate complex remediation workflows and integrate seamlessly with your existing DevOps toolchain. The goal is security that enhances velocity, not hinders it."
 
 *[5-second transition pause]*
 
-#### BEAT 3: CNAPP Auto-Discovery in Action (Expert - 1 minute)
-**[SLIDE 4C: Modern Discovery Capabilities - new slide needed]**
+#### BEAT 3: Customer Success Story - 90-Day Transformation (Expert - 1 minute)
+**[SLIDE 3C: Before/After Metrics Dashboard - new slide needed]**
 
-"Modern CNAPP platforms solve this through:"
+"Let me share a real customer story that shows this transformation in action. Mid-size financial services company, 200 developers, multi-cloud environment spanning AWS, Azure, and GCP.
 
-**Continuous API-based discovery:**
-- Poll cloud provider APIs every 5-15 minutes
-- Automatically detect new resources across all regions
-- Map resource relationships and dependencies
+Before CNAPP, this was their daily reality: 11,000+ alerts flooding in from fragmented tools. Their 4-person security team spent 90% of their time just triaging alerts, trying to figure out what mattered. When they did identify a critical issue, it took an average of 18 days to fix because of the coordination required between security and development teams. Developers faced 3+ day delays per deployment waiting for security reviews. The relationship between security and development? Let's just say it was adversarial.
 
-**Multi-cloud normalization:**
-- Translate AWS security groups = Azure NSGs = GCP firewall rules
-- Unified resource taxonomy across cloud providers
-- Common risk scoring regardless of underlying cloud
+After 90 days with CNAPP, same people, same infrastructure, completely different story. Those 11,000+ alerts became 50 prioritized daily actions - that's a 99.5% noise reduction. The same 4-person security team stopped playing alert whack-a-mole and started doing strategic security work. Critical issues that used to take 18 days to fix now take 4 hours. Developer deployment delays? Down from 3+ days to 15 minutes. And the security-development relationship transformed from adversarial to collaborative.
 
-**Real-time change detection:**
-- Alert within minutes when something becomes publicly accessible
-- Track configuration drift from approved baselines
-- Audit trail of who changed what, when
+The operational transformation metrics tell the whole story. Detection speed went from 2 weeks to 5 minutes. Context gathering went from 2 hours of tool-hopping to instant unified dashboards. Prioritization shifted from manual judgment calls to automated risk scoring. Remediation went from 100% manual processes to 80% automated. Team satisfaction went from burnout to high engagement.
 
-**Expert insight:** "The Toyota database would have been discovered in the first scan and flagged as critical within minutes - not hidden for 10 years."
+Same people, same infrastructure, completely different outcomes. The difference? Unified operations instead of fragmented chaos.
 
-**For beginners:** "The lesson here is simple - you can't protect what you don't know exists. Start with comprehensive asset discovery before worrying about advanced security controls."
-
-**For intermediate practitioners:** "This is why continuous discovery matters more than point-in-time scans. Your cloud environment changes every few minutes - your security tools need to keep up."
-
-**Advanced perspective:** "Look for platforms that can correlate asset discovery with business context. Finding a public database is one thing - understanding that it contains customer PII and connects to your payment systems is what drives prioritization."
+For those new to security operations, the lesson here is simple: It's not about having perfect security, it's about having manageable security. CNAPP makes complex environments understandable. If you're already running security operations, notice the focus on operational metrics, not just security metrics. CNAPP improves how teams work together, not just how they detect threats. For advanced practitioners, the real value here is cultural transformation. When security becomes enablement instead of enforcement, developers become your allies instead of adversaries."
 
 *[5-second transition pause]*
 
-### ENGAGEMENT BREAK (Host - 15 seconds)
-**[INTERACTIVE: Architecture Challenge]**
-"Quick challenge: Looking at this multi-cloud architecture diagram, what's the biggest risk?"
-*(Show diagram with obvious public storage bucket)*
-"Drop your answers in chat - let's see how quickly you spot it!"
+### ENGAGEMENT BREAK (Host - 25 seconds)
+**[INTERACTIVE: Workflow Comparison Challenge]**
+"Let's do a quick comparison. In chat, tell me: How long does it typically take your team to investigate and fix a critical misconfiguration in your cloud environment today?"
+
+*[Pause for responses]*
+
+"I'm seeing answers from 2 hours to 2 weeks. That range tells the whole story - some of you have unified workflows, others are still tool-hopping. The goal is getting everyone to the 2-hour side of that equation."
 
 ---
-
-*[10-second pause for question transition]*
 
 ## 🎯 QUESTION 4
-**"How do you prioritize vulnerabilities that actually matter?"**
+**"What should I do first thing Monday morning to start implementing CNAPP?"**
 
-**Target time:** 5.5 minutes
-**Breach story:** Equifax (2017) - Prioritization failure led to business catastrophe
-**Engagement:** Risk scoring comparison exercise
-**Slide:** Reuse existing CVSS vs Real Risk slide
+**Target time:** 4 minutes
+**Framework:** 30-60-90 day practical implementation roadmap
+**Engagement:** Monday morning action plan exercise
+**Slide:** New SLIDE 4A - Implementation roadmap
 
 ### 🎤 HOST OPENING (12 seconds)
-"Real customer quote: 'We have 50,000 critical vulnerabilities. Where do we even start?' This is the prioritization challenge every security team faces."
+"Alright, we've covered the what, why, and how of CNAPP. Now for the most important question: You're convinced, but where do you actually start? What do you suggest for a Monday morning action plan?"
 
 *[5-second pause for transition]*
 
 ### Beat Structure:
 
-#### BEAT 1: Why CVSS Fails in Cloud (Expert - 1.5 minutes)
-**[SLIDE 3A: CVSS vs Real Risk - reuse existing]**
+#### BEAT 1: The 30-Day Foundation (Expert - 1.5 minutes)
+**[SLIDE 4A: 30-60-90 Day Implementation Roadmap - new slide needed]**
 
-"CVSS was built for a different world:"
-- Assumes network adjacency
-- Ignores cloud permissions
-- No context awareness
-- Static scoring
+"Start with visibility - you can't secure what you can't see:"
 
-"A CVSS 10 on an isolated dev box < CVSS 6 on your payment processor"
+**Week 1: Asset Inventory Audit**
+- Map your current cloud footprint across AWS, Azure, GCP
+- Document existing security tools and their outputs
+- Identify tool overlaps and gaps in coverage
+- "Don't try to fix anything yet - just understand what you have"
 
-**The cloud context problem:**
-- Same vulnerability, three different environments:
-  1. Dev environment, internal only = Low risk
-  2. Production, but behind WAF = Medium risk
-  3. Internet-facing, with admin credentials = CRITICAL
+**Week 2: Risk Assessment Reality Check**
+- Identify your crown jewels - most critical systems and data
+- Map which systems can access those crown jewels
+- Document current alert volume from existing tools
+- "This is your baseline - where you are today"
 
-"Traditional scanners see the same CVE three times and rate them identically. That's not helpful."
+**Week 3: Quick Win Implementation**
+- Enable free cloud security baselines (Azure Policy free tier, GCP Security Command Center standard)
+- Set up basic activity monitoring across clouds (AWS CloudTrail, Azure Activity Log, GCP Cloud Audit Logs)
+- Explore free security scanning in your CI/CD environments (GitHub Advanced Security, GitLab security features, Azure DevOps extensions)
+- Subscribe to security announcement feeds (AWS Security Bulletins, Azure Security Center updates, GCP Security Command Center notifications, CVE feeds)
+- "One quick automation win builds momentum"
 
-**Math moment:** "CVSS is logarithmic, but cloud risk is exponential based on exposure and context."
+**Week 4: Tool Integration Assessment**
+- Evaluate how well your current tools talk to each other
+- Identify manual processes that could be automated
+- Create a unified dashboard view (even if manual initially)
+- "Start connecting the dots between your tools"
 
-**For beginners:** "Don't worry about memorizing CVSS scores. Focus on understanding: Is this system internet-facing? Does it have access to sensitive data? That context matters more than the number."
+**For beginners:** "Don't try to replace everything at once. Start with visibility across one cloud provider and expand from there."
 
-**For intermediate practitioners:** "You've probably seen this - a medium CVSS vulnerability that's internet-facing and has database access can be more dangerous than a critical CVSS finding on an isolated development system."
+**For intermediate practitioners:** "Focus on connecting your existing tools first. You probably have more integration opportunities than you realize."
 
-**Advanced perspective:** "Consider implementing dynamic CVSS scoring that adjusts based on your environment. The base CVSS is just a starting point - temporal and environmental scores should reflect your actual risk posture."
-
-*[5-second transition pause]*
-
-#### BEAT 2: Modern Risk Scoring Factors (Expert - 2 minutes)
-**[SLIDE 3B: Risk Formula with Variables - reuse existing]**
-
-"Real risk calculation in cloud environments:"
-
-**Risk = (CVSS × Exploitability × Exposure × Business Impact) / Compensating Controls**
-
-**Key factors CNAPPs consider:**
-
-**Exploitability:**
-- EPSS score (likelihood of exploitation in the wild)
-- Available exploits and proof-of-concept code
-- Complexity of exploitation
-
-**Exposure:**
-- Internet-facing vs internal systems
-- Network segmentation and access controls
-- Identity and permissions context
-
-**Business Impact:**
-- Data sensitivity (PII, PCI, intellectual property)
-- System criticality (revenue-generating, compliance-required)
-- Downstream dependencies
-
-**Compensating Controls:**
-- WAF protection and filtering
-- Network isolation and micro-segmentation
-- Monitoring and detection capabilities
-
-**Attack path consideration:** "CNAPPs also map potential attack routes - can this vulnerability lead to more critical systems? This helps identify which vulnerabilities could be stepping stones to bigger problems."
-
-**For beginners:** "Think of it like this: a vulnerability on a system that can't access anything else is like a broken lock on an empty room. A vulnerability on a system with admin access to your database is like a broken lock on the bank vault."
-
-**For intermediate practitioners:** "You'll want to map your crown jewels first - identify your most critical systems and data, then work backwards to see what has access to them. Prioritize vulnerabilities on those pathways."
-
-**Advanced perspective:** "Look for platforms that can model complex attack graphs and calculate transitivity risk. It's not just direct access - it's the chain of permissions and trust relationships that create exploitable paths."
+**Advanced perspective:** "Use this month to build the business case. Document time savings and efficiency gains from even basic automation."
 
 *[5-second transition pause]*
 
-#### BEAT 3: Equifax - When Prioritization Goes Wrong (Expert - 1.5 minutes)
-**[SLIDE 3C: Equifax Breach - Prioritization Failure - reuse existing but modify]**
+#### BEAT 2: The 60-90 Day Transformation (Expert - 1.5 minutes)
+**[SLIDE 4B: Implementation Milestones - new slide needed]**
 
-📊 **Breach Context: Equifax (2017)**
-- **Vulnerability:** Apache Struts CVE-2017-5638 (CVSS 9.8)
-- **Context:** Internet-facing portal during cloud migration
-- **Failure:** Buried in thousands of other "critical" findings
+**Days 30-60: Unified Platform Evaluation**
+- Pilot CNAPP solutions with a subset of your environment
+- Compare vendors on your workflow needs, not just feature lists
+- Test integrations with your existing tools that will definitely be staying
+- Measure improvement in mean time to detection and resolution
 
-"Equifax had the vulnerability data but failed at prioritization:"
+**Days 60-90: Automation and Integration**
+- Implement automated remediation for low-risk findings
+- Integrate CNAPP alerts with your ticketing system
+- Create risk-based prioritization workflows
+- Train teams on unified dashboard and new processes
 
-**What they knew:**
-- Apache Struts vulnerability disclosed in March
-- Thousands of other "critical" vulnerabilities in their environment
-- Limited security team resources
+**Key metrics to track:**
+- **Alert volume reduction:** From thousands to hundreds
+- **Time to investigate:** From hours to minutes
+- **Cross-team collaboration:** Security and dev working together
+- **Remediation speed:** From weeks to days
 
-**What they missed:**
-- This specific system was internet-facing (exposure)
-- Portal had direct database access (business impact)
-- No compensating controls like WAF filtering
-- High EPSS score - actively being exploited in wild
+"The goal isn't perfection in 90 days - it's momentum. Each improvement builds on the last."
 
-**The prioritization failure:**
-- Treated all CVSS 9+ vulnerabilities equally
-- No context-aware risk scoring
-- No consideration of exposure levels
-- Patching based on CVSS alone, not business risk
+**For beginners:** "Pick one cloud environment and one team to start with. Success breeds success - others will want what you're building."
 
-"If Equifax had modern risk prioritization, this vulnerability would have risen to the top of the list because: High CVSS + Internet exposure + Direct database access + Active exploitation = IMMEDIATE ACTION REQUIRED."
+**For intermediate practitioners:** "Focus on process improvement, not just tool implementation. How you work together matters as much as what tools you use."
 
-*[5-second transition pause]*
-
-#### BEAT 4: Practical Prioritization Framework (Expert - 30 seconds)
-**[SLIDE 3D: Risk Prioritization Matrix - reuse existing decision matrix]**
-
-"Focus your limited time on the toxic combinations:"
-
-**Immediate action (fix this week):**
-- High CVSS + Internet exposure + Critical business systems
-- Any vulnerability with active exploitation + sensitive data access
-
-**High priority (fix this month):**
-- Medium CVSS + High exposure + Business impact
-- High CVSS + Internal systems + Critical data
-
-**Standard timeline (fix this quarter):**
-- High CVSS + Internal + Non-critical systems
-- Low CVSS + Any exposure + Strong compensating controls
-
-"The goal: Transform 50,000 alerts into 50 priorities that actually matter to your business."
-
-**For beginners:** "Start with the internet-facing systems first. If it's publicly accessible and has a high CVSS score, that's your priority. Everything else can wait until you've secured your front door."
-
-**For intermediate practitioners:** "Build a scoring model that reflects your business. A vulnerability in your revenue-generating system should score higher than the same vulnerability in your internal wiki, regardless of CVSS."
-
-**Advanced perspective:** "Consider integrating threat intelligence feeds and business context into your scoring algorithms. The same vulnerability might have different priority scores across different business units based on their risk tolerance and criticality."
+**Advanced perspective:** "Use this period to develop custom correlation rules and risk models specific to your environment. Generic CNAPP is good; customized CNAPP is powerful."
 
 *[5-second transition pause]*
 
-### ENGAGEMENT BREAK (Host - 18 seconds)
-**[EXERCISE: Risk Ranking Challenge]**
-"Quick exercise: I'm showing three vulnerabilities. Rank them by real risk using context-aware prioritization:"
-1. CVSS 9.0 on internal dev server (no internet access, test data only)
-2. CVSS 6.0 on internet-facing API with admin database access (customer PII)
-3. CVSS 8.0 on isolated backup system (no network access, encrypted data)
+#### BEAT 3: Common Pitfalls and Success Factors (Expert - 45 seconds)
+**[SLIDE 4C: Implementation Success Factors - new slide needed]**
 
-"Drop your rankings in chat - let's see how context changes your priorities!"
+**What makes implementations succeed:**
+- **Start small, scale gradually** - Don't try to solve everything on day one
+- **Focus on workflow integration** - Security that fits existing processes gets adopted
+- **Measure business impact** - Track time savings, not just security metrics
+- **Include development teams early** - They're your allies, not adversaries
 
----
+**Common failure patterns to avoid:**
+- **Tool-first thinking** - Buying technology before understanding workflows
+- **Perfect security mindset** - Trying to fix every finding instead of prioritizing
+- **Isolation implementation** - Security team working alone without dev input
+- **Big bang deployment** - Rolling out to entire organization simultaneously
 
-*[10-second pause for question transition]*
+"Remember: CNAPP is about operational transformation, not just security improvement."
 
-## 🎯 QUESTION 5
-**"How does automation accelerate risk reduction and solve DevSecOps friction?"**
+**For beginners:** "Start with one automation that saves time every day. Build from there."
 
-**Target time:** 5 minutes
-**Success story:** Fintech transformation case study
-**Engagement:** Developer friction solutions
-**Slide:** Reuse success story slides with automation focus
+**For intermediate practitioners:** "Get early wins with existing tools before evaluating new platforms."
 
-### 🎤 HOST OPENING (10 seconds)
-"The eternal struggle: Security wants to scan everything, developers want to ship fast. The good news? Automation can give you both."
-
-*[5-second pause for transition]*
-
-### Beat Structure:
-
-#### BEAT 1: The Speed vs Security Dilemma (Expert - 1.5 minutes)
-**[SLIDE 4A: Developer Workflow with Security Gates - reuse existing]**
-
-"Why developers hate security tools:"
-- **Slow builds:** Adding 10+ minutes to deployment pipelines
-- **Unclear feedback:** "Vulnerability found" - where? how bad? how to fix?
-- **Late detection:** Finding problems in production when they're expensive to fix
-- **No fix guidance:** Alerts without actionable remediation steps
-
-"Traditional security cadence vs developer velocity:"
-- Security review: 3 weeks
-- Vulnerability scan: 3 days
-- Developer deployment: 5 minutes
-- "By the time security finds the problem, that infrastructure has been deployed, modified, and replaced hundreds of times."
-
-**For beginners:** "Think of it like trying to inspect cars on a highway while walking. You need to be moving at the same speed as the traffic to be effective."
-
-**For intermediate practitioners:** "You've probably felt this pain - finding a vulnerability in a container that was replaced an hour ago. The solution is shifting left and automating the scanning pipeline."
-
-**Advanced perspective:** "The goal is policy-as-code and continuous validation. Infrastructure should be born secure and stay secure through automated guardrails, not periodic security reviews."
+**Advanced perspective:** "Design for scale from day one, but implement incrementally. Your 90-day pilot should inform your 2-year strategy."
 
 *[5-second transition pause]*
 
-#### BEAT 2: Automation Integration Points (Expert - 1.5 minutes)
-**[SLIDE 4B: CI/CD Pipeline Integration - reuse existing pipeline slides]**
+### ENGAGEMENT BREAK (Host - 20 seconds)
+**[INTERACTIVE: Monday Morning Commitment]**
+"Let's make this real. In chat, tell me: What's ONE thing you're going to do this Monday to start your CNAPP journey? Could be an audit, a conversation with your team, or enabling one simple automation."
 
-"Smart automation integration:"
+*[Pause for responses]*
 
-**Pre-commit hooks:**
-- Secret scanning before code reaches repository
-- Infrastructure-as-Code policy validation
-- 30-second feedback loop
-
-**Build-time scanning:**
-- Container image vulnerability assessment
-- Dependency vulnerability checking
-- Fail fast on critical findings
-
-**Deployment gates:**
-- Final security validation before production
-- Automated exception handling for approved risks
-- 2-minute security check maximum
-
-**Runtime protection:**
-- Continuous configuration monitoring
-- Automated drift correction
-- Real-time threat response
-
-**Code example snippet:**
-```yaml
-# Fast security integration
-- name: Security Scan
-  run: scanner --fail-on critical --auto-fix medium
-  timeout-minutes: 2  # Speed matters!
-```
-
-*[5-second transition pause]*
-
-#### BEAT 3: Fintech Success Story - 90 Days to DevSecOps (Expert - 1.5 minutes)
-**[SLIDE 4C: Success Metrics Dashboard - reuse existing]**
-
-"Real customer: 50-person fintech, multi-cloud (AWS compute, Azure data, GCP analytics)"
-
-**Before automation:**
-- 2000+ vulnerabilities across three clouds
-- 400+ misconfigurations with no prioritization
-- 3-person security team drowning in alerts
-- Developers bypassing security because unclear priorities
-- Manual remediation taking weeks per issue
-
-**After 90 days with CNAPP automation:**
-- 50 critical vulnerabilities (risk-prioritized across all clouds)
-- Automated remediation for 80% of common misconfigurations
-- Same 3 people, working strategic not tactical
-- Developers fixing security issues because they understand business impact
-- Average remediation time: 2 hours vs 2 weeks
-
-"The key? Unified visibility and automated risk reduction. They didn't try to fix everything - CNAPP helped them fix what mattered most."
-
-**Automation wins:**
-- **Detection:** Minutes instead of weeks
-- **Prioritization:** Risk-based, not volume-based
-- **Communication:** Developer-friendly alerts with fix guidance
-- **Remediation:** Automated for simple issues, guided for complex ones
-
-**For beginners:** "Start with one automation win - secret scanning in your git repos. It's easy to implement and prevents a lot of headaches down the road."
-
-**For intermediate practitioners:** "Focus on integrating security into your existing CI/CD pipeline. Developers already trust that process, so make security part of it rather than a separate step."
-
-**Advanced perspective:** "Look for platforms that can automatically generate fix pull requests for certain types of vulnerabilities. The holy grail is security that improves code without human intervention."
-
-*[5-second transition pause]*
-
-### ENGAGEMENT BREAK (Host - 15 seconds)
-**[CHAT PROMPT: "What's your biggest DevSecOps friction point?"]**
-"Let's hear from you - drop in chat what slows down your security/development collaboration most. We'll address the common themes."
+"Fantastic - I'm seeing everything from 'audit our current tools' to 'enable AWS Config.' The key is starting somewhere. Small steps lead to big changes."
 
 ---
 
@@ -586,20 +403,20 @@ These principles aren't cloud-specific - they're what good security looks like w
 ### Host Wrap-up
 "We've covered four critical aspects of CNAPP today. Key takeaways:"
 
-1. **Unified components matter** - CSPM, CWPP, and CDR working together beat isolated tools
-2. **Multi-cloud visibility is achievable** - but requires continuous, API-driven discovery
-3. **Attack paths change prioritization** - focus on real exploitable routes to critical assets
-4. **Automation enables velocity** - security becomes enablement, not enforcement
+1. **Modern security requires modern thinking** - Moving from static, manual practices to dynamic, automated ones
+2. **Unified platforms solve real problems** - CSPM, CWPP, and CDR integration eliminates tool fragmentation like we saw with MOVEit
+3. **Operations transformation matters most** - Moving from alert chaos to risk-driven workflows
+4. **Start Monday with a plan** - 30-60-90 day roadmap turns strategy into action
 
 ### Expert Final Thought
 "If you remember one thing: In cloud, perfect security is impossible, but good enough security is achievable. Focus on what matters most to your business, automate what you can, and build bridges between security and development teams."
 
 ### Next Steps
-"Practical guidance for Monday morning:"
-- **Week 1:** Audit your current tool sprawl and identify integration gaps
-- **Week 2:** Map your attack paths to critical assets
-- **Week 3:** Implement one automation quick win
-- **Week 4:** Evaluate CNAPP solutions for your environment
+"Your Monday morning action plan:"
+- **This week:** Asset inventory audit - map what you have
+- **Next week:** Risk assessment - identify your crown jewels
+- **Week 3:** Quick automation win - enable basic CSMP or secret scanning
+- **Week 4:** Tool integration assessment - connect your existing tools
 
 **Resources:**
 - Episode 2: Deep dive into CSPM and CWPP implementation
@@ -616,19 +433,21 @@ These principles aren't cloud-specific - they're what good security looks like w
 - **SLIDE 1D:** AWS Security Design Principles → Keep existing
 - **SLIDE 2A:** Tool sprawl → Modified to show CNAPP component integration
 - **SLIDE 2B:** MOVEit breach timeline → Update to show asset discovery and vulnerability correlation gaps
-- **SLIDE 4A:** Multi-cloud inventory → Keep existing visualization
-- **SLIDE 4B:** Toyota visibility gaps → Keep existing
-- **SLIDE 4C:** Success story metrics → Modify to emphasize automation gains
+- **SLIDE 2C:** CNAPP Unified Platform → Reuse for workflow transformation explanation
 
 ### New Slides Needed:
-- **SLIDE 5B:** CI/CD pipeline integration points
+- **SLIDE 3A:** Alert chaos vs CNAPP workflow comparison (before/after operational view)
+- **SLIDE 3B:** Unified CNAPP operations dashboard (single pane of glass)
+- **SLIDE 3C:** Before/after metrics dashboard (customer success story)
+- **SLIDE 4A:** 30-60-90 Day implementation roadmap
+- **SLIDE 4B:** Implementation milestones and key metrics
+- **SLIDE 4C:** Implementation success factors and common pitfalls
 
 ### Engagement Elements:
 - Poll: Traditional best practice problems (Q1)
 - Poll: Tool count assessment (Q2)
-- Interactive: Architecture risk challenge (Q3)
-- Exercise: Risk ranking challenge (Q4)
-- Chat: DevSecOps friction collection (Q5)
+- Interactive: Workflow comparison challenge (Q3)
+- Interactive: Monday morning commitment (Q4)
 
 ---
 
