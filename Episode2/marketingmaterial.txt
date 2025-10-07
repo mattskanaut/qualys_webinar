@@ -1,0 +1,14 @@
+Join the Qualys Cloud team as we take a deeper dive into the alphabet soup with Cloud Security Posture Management (CSPM) and Cloud Workload Protection (CWP).
+
+This session will explore how to identify and remediate misconfigurations, enforce cloud compliance, and protect workloads across multi-cloud environments.
+
+Attendees will gain practical knowledge and hands-on strategies to strengthen their cloud security posture and integrate CSPM and CWP into a comprehensive vulnerability management program.
+
+What you’ll learn:
+
+- Why traditional vulnerability management approaches are insufficient for cloud native environments and how factors such as dynamic workloads, expanded attack surfaces and CI/CD acceleration drive the need for a new approach.
+- How cloud native vulnerability management emphasises continuous monitoring, realtime scanning and context, combining identity, configuration and threat intelligence information to prioritise risks.
+- Practical steps to initiate a cloud native vulnerability management programme: start with comprehensive asset visibility, embed security into CI/CD workflows and adopt automation for remediation.
+- Why shared responsibility in the cloud means organisations must understand their obligations and complement cloud provider controls with their own vulnerability management strategies.
+- A look at Qualys TotalCloud and how it delivers CNAPP capabilities for organisations of all sizes in EMEA.
+
