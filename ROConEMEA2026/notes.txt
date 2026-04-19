@@ -1,0 +1,12 @@
+Agents
+
+Val - validates that exploits are truly exploitable - uses TruConfirm
+https://blog.qualys.com/product-tech/2026/03/23/meet-agent-val-closing-the-validation-gap-in-exposure-management-at-machine-speed-with-agentic-ai
+
+Agent Vikram - Discovers un secured assets and recommends changes to enhance coverage
+https://blog.qualys.com/product-tech/2025/08/20/how-agentic-ai-helps-with-adaptive-cloud-risk-assessment-with-agent-vikram
+
+Agent Nexa - Prioritizes findings based on runtime data and attack paths
+
+Agent Steve - Autonomous remediation, it will help you build playbooks for autonomous execution with an LLM interface.
+

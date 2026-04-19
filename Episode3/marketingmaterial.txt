@@ -1,0 +1,16 @@
+Episode 3 – Containerisation in Practice: The Developer/Security Relationship
+
+Containers and Kubernetes have become a a critical component of modern cloud-native environments and a new way to approach software delivery, but they also introduce new layers of complexity.
+
+Tailored for vulnerability management teams, this session will explore the unique risks containers introduce, how to secure them throughout the CI/CD pipeline, and how to gain visibility into container vulnerabilities at runtime.
+
+
+Join us to learn how to integrate container security seamlessly into your existing vulnerability management program, ensuring scalable and consistent protection across dynamic cloud workloads.
+
+What you’ll learn:
+
+- The fundamentals of container security: why it involves securing images, runtimes, environment settings, orchestration layers and networks.
+- Why container security is challenging due to increased attack surface and lack of visibility, and how specialised tools provide insight into container activity.
+- How DevSecOps embeds security into CI/CD pipelines, enabling early detection of vulnerabilities and fostering crossfunctional collaboration.
+- Best practices for collaborative container security, such as enforcing least privilege, using trusted images, continuously monitoring every layer and establishing automated security testing.
+- The rising importance of Kubernetes Security Posture Management (KSPM) as Kubernetes displaces cloud native solutions.
