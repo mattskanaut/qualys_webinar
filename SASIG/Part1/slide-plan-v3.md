@@ -1,16 +1,3 @@
-
- 1. Secure software development is a mature, 30-year-old discipline with broad consensus.
- 2. Its controls quietly depend on humans doing the work - defining requirements, threat-modelling, reviewing designs, choosing libraries,
-  reading code. NIST itself separates this human-judgment layer from the CI/CD pipeline that enforces it (SP 800-204D Appendix B
- explicitly carves out PW.1 - PW.4 and PW.7 as outside pipeline scope).
- 3. AI now sits inside every human-judgment control and compresses or removes it. Four assumptions break: the Writer wrote it, the
- Reviewer read it, the Dependency was real, the Tool was inspectable.
- 4. The response is mostly not more pipeline tooling - pipelines were never designed to enforce judgment. It is restoring the
- human-judgment layer through process, organisation, and governance, with new pipeline gates added only where AI introduces genuinely new
- attack surface.
-
-
-
 # Part 1 - Slide Plan (v3, three-part structure)
 
 **Webinar:** The New SDLC: Security When Every Developer Writes With AI
@@ -18,6 +5,19 @@
 **Audience:** SASIG community - CISOs and security leaders (vendors, contractors and press excluded)
 **Format:** 55 min content + 5 min Q&A. Non-product. Roughly 40% problem / 60% what to do.
 **Style:** Brief, high-level. Speaker carries the content; slides anchor.
+
+---
+
+## The argument
+
+1. Secure software development is a mature, 30-year-old discipline with broad consensus.
+2. Its controls quietly depend on humans doing the work - defining requirements, threat-modelling, reviewing designs, choosing libraries, reading code. NIST itself separates this human-judgment layer from the CI/CD pipeline that enforces it (SP 800-204D Appendix B explicitly carves out PW.1 - PW.4 and PW.7 as outside pipeline scope).
+3. AI now sits inside every human-judgment control and compresses or removes it - measurably so: AI-generated code contains 2.74x more vulnerabilities than human-written code for the same task (Veracode 2025), and AI-assisted developers write less-secure code while believing the opposite (Perry et al., CCS 2023). Four assumptions break:
+   - **The developer wrote it** (W)
+   - **The reviewer read it** (R)
+   - **The dependencies were vetted** (D)
+   - **The tools were deterministic** (T)
+4. The response is mostly not more pipeline tooling - pipelines were never designed to enforce judgment. It is restoring the human-judgment layer through process, organisation, and governance, with new pipeline gates added only where AI introduces genuinely new attack surface.
 
 ---
 
