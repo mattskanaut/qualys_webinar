@@ -80,8 +80,9 @@ Title: The four assumptions every secure SDLC rests on
   D - The dependencies were vetted
   T - The tools were deterministic
 Footer (italic): "With AI in the loop, what does the developer actually know about what was just written?"
+Footer attribution (smaller, beneath the footer): "Effective AI collaboration still requires active human judgment." - Anthropic, 2026 Agentic Coding Trends Report.
 Visual: Four bold W/R/D/T glyphs. Concept slide - icons appear here only, not pinned in later slides.
-Tone: Definitive.
+Tone: Definitive. Even Anthropic agrees the human is load-bearing.
 ```
 
 ---
@@ -120,10 +121,13 @@ Pull quote (italic):
   "fully give in to the vibes... forget that the code even exists"
   - Andrej Karpathy, Feb 2025
 
+Why now (board-level line, smaller type beneath the trajectory):
+  AI-centric orgs report 20-40% opex reductions and 12-14pp EBITDA gains (CIO May 2026)
+
 Closing line: The slope is the story.
 
-Visual: 75% dominates the slide. Trajectory beneath it. Adoption headcount stats stay in speaker notes.
-Tone: Crisp, audited.
+Visual: 75% dominates the slide. Trajectory beneath it. Why-now line as a quiet board-level beat. Adoption headcount stats stay in speaker notes.
+Tone: Crisp, audited. The "why now" the board hears.
 ```
 
 ---
@@ -219,26 +223,31 @@ CVE tile grid (2026):
   Copilot Reprompt
   Claude Code CLI RCE
   Windsurf MCP zero-interaction
-Bullet: ~2,000 production MCP servers, none authenticated (Prakash AIP)
-Closing line: The pipeline runs AI tools that run AI tools.
-Visual: Pipeline-attack-flow left. CVE tile grid right.
-Tone: Names, dates, CVEs.
+Bullets:
+  - ~2,000 production MCP servers, none authenticated (Prakash AIP)
+  - Shadow AI: 75%+ of knowledge workers use GenAI; 3 of 4 CISOs find unsanctioned coding tools running (Sysdig 2026; Aikido 2026); prompts routinely leak proprietary code and credentials
+Closing line: The pipeline runs AI tools that run AI tools - and your developers have already plugged it into your data.
+Visual: Pipeline-attack-flow left. CVE tile grid right. Shadow-AI bullet sits as a present-tense beat beneath the grid.
+Tone: Names, dates, CVEs - plus the present-tense shadow-AI reality.
 ```
 
 ---
 
-## Slide 14 - Tooling
+## Slide 14 - Tooling - what a confidently AI-enabled SDLC looks like
 
 ```
-Title: Tooling - the pipeline-enforceable controls
+Title: Tooling - what a confidently AI-enabled SDLC looks like
+Subtitle: The yes path - four gates, then AI-aware defence in parallel
 Pipeline diagram with four gates:
   1. AI-asset & MCP inventory
   2. IDE boundary
   3. PR gate (fail-closed)
   4. Build gate (pin versions)
-Closing line: Inventory first, then gates.
-Visual: Linear horizontal pipeline with four vertical gate bars.
-Tone: Operational.
+Closing line: Inventory first, then gates - so your developers can move fast safely.
+Footer band (single quiet line beneath the pipeline):
+  And the defenders are evolving too - AI-aware SAST is the new perimeter category (Snyk DeepCode, Datadog OSS, DryRun, Endor, Semgrep, GitHub CodeQL). Fight AI with AI.
+Visual: Linear horizontal pipeline with four vertical gate bars. Single muted footer band beneath the pipeline carries the AI-aware-SAST line - supporting context, not a fifth gate.
+Tone: Operational and enabling. The "what good looks like" opener for Section 3.
 ```
 
 ---

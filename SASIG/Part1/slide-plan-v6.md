@@ -220,6 +220,8 @@ Each assumption named, with the frameworks that codify it in tiny type underneat
 
 *Closing italicised line at bottom of slide:* **"With AI in the loop, what does the developer actually know about what was just written? How secure are we?"**
 
+*Footer attribution (smaller type, beneath the closing line):* **"Effective AI collaboration still requires active human judgment." - Anthropic, 2026 Agentic Coding Trends Report.**
+
 **Graphic:** Four-quadrant card. Each quadrant has the icon (W / R / D / T), the one-sentence assumption, and the framework citations beneath in smaller type. This is a *concept slide* - the four-quadrant frame is shown once here and not pinned in the corner of every later slide.
 
 **Speaker notes:** This is the concept that anchors the rest of the talk. Walk the four quadrants slowly.
@@ -232,11 +234,14 @@ This is the only slide where the four-assumption frame is the focus. The rest of
 
 Pause on the closing line. Don't answer it - the answer is the rest of the talk.
 
+The Anthropic footer attribution is a deliberate move. The 2026 Agentic Coding Trends Report is published by the company shipping the most autonomous coding agent on the market and aimed squarely at engineering leaders. Their own conclusion - "effective AI collaboration still requires active human judgment" - is peer-credible reinforcement for the four-assumption thesis from the source most invested in the opposite outcome. Land it briefly: even Anthropic agrees the human is load-bearing.
+
 **Sources:**
 - NIST SP 800-218 (SSDF v1.1) - verbatim practice titles, https://csrc.nist.gov/pubs/sp/800/218/final
 - Microsoft SDL practices - https://www.microsoft.com/en-us/securityengineering/sdl/practices
 - OWASP SAMM model - https://owaspsamm.org/model/
 - SLSA v1.2 - https://slsa.dev/spec/v1.2/
+- Anthropic, 2026 Agentic Coding Trends Report - https://resources.anthropic.com/2026-agentic-coding-trends-report
 
 ### Gamma brief
 
@@ -252,6 +257,7 @@ Quadrant 3 - D: The dependencies were vetted
 Quadrant 4 - T: The tools were deterministic
   Codified in: SSDF PO.3, PO.5 | SDL secure engineering environment
 Footer (italic, full width): "With AI in the loop, what does the developer actually know about what was just written? How secure are we?"
+Footer attribution (smaller type, beneath the closing line): "Effective AI collaboration still requires active human judgment." - Anthropic, 2026 Agentic Coding Trends Report.
 Visual: Four large quadrant cells, each dominated by a bold W/R/D/T glyph. This is a concept slide, not a recurring icon system - the deck does not pin these icons in slide corners.
 Tone: Definitive. The talk's conceptual anchor.
 ```
@@ -312,6 +318,7 @@ Tone: Definitive. Closes Section 1 and sets up Section 2.
 - **Google, Q1 2026 earnings call**: **75%** of new code is AI-generated and engineer-approved - up from 50% in fall 2025 and 25% in 2024
 - **Adoption is not in dispute**: Microsoft FY26 Q2 - 4.7M paid Copilot subscribers (~90% of Fortune 100); DORA 2025 (n~5,000) - 90% of devs use AI at work; McKinsey Feb 2026 (4,500 devs / 150 enterprises) - 90%+ of software teams use AI
 - **Frontier labs sit higher**: Anthropic ~70-90% company-wide (per spokesperson, Jan 2026); senior engineers report personal workflows at ~100%
+- **The board-level "why now"**: AI-centric organisations report **20-40% opex reductions** and **12-14pp EBITDA margin gains** (CIO May 2026, summarising analyst data) - the number a CISO walks into a board meeting with
 
 **Graphic:** A single hero stat - 75% - dominates the centre. Below it, three small data points form the trajectory row (2024 / Fall 2025 / Q1 2026 = 25% / 50% / 75%). Karpathy pull quote sits below the trajectory. Adoption headcount stats compress to a small two-line footer band. Frontier-lab numbers as a quiet caption.
 
@@ -322,6 +329,8 @@ One nuance worth naming explicitly so nobody catches it as a gotcha: Google's 75
 Adoption is not the story we are spending time on. Three independent 2025-2026 sources (Microsoft, DORA, McKinsey) all converge on near-universal in the enterprise. That is footer-band material. The actual story is the trajectory of *how much code is being written by AI*, which is a different and more security-relevant question.
 
 The frontier-lab numbers are softer-source - Boris Cherny on X, an Anthropic spokesperson clarifying 70-90% company-wide. Don't overclaim them. Use them as leading indicators: the people building the models run their workflows at the high end, and the rest of the industry is moving toward where they already are.
+
+The board-level beat at the bottom is the "why now" your CISO audience needs to be able to recite back to their board. AI-centric organisations are reporting 20-40% operating-cost reductions and 12-14 percentage-point EBITDA margin improvements. That is the number that closes the conversation about whether AI development tools get adopted - they already are being adopted, and the financial pressure to keep adopting is structural. The blurb's "or be left far behind in the feature race" is what this number underwrites. Land it briefly - it's not the focus of the slide, but it earns the audience's attention for the security argument that follows.
 
 The takeaway is not the headline number. It is the trajectory and what it implies. Whatever your build pipeline looks like today, in twelve months it will look more like Google's than like the 2024 baseline. The next five slides walk what is already breaking at scale.
 
@@ -336,6 +345,7 @@ The takeaway is not the headline number. It is the trajectory and what it implie
 - Microsoft FY26 Q2 earnings - https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q2/press-release-webcast
 - Anthropic / OpenAI frontier-lab figures (Cherny, Roon via Fortune, Jan 2026) - https://fortune.com/2026/01/29/100-percent-of-code-at-anthropic-and-openai-is-now-ai-written-boris-cherny-roon/
 - Nadella 30% (historical floor) - https://techcrunch.com/2025/04/29/microsoft-ceo-says-up-to-30-of-the-companys-code-was-written-by-ai/
+- AI-centric business outcomes (20-40% opex / 12-14pp EBITDA) - CIO, May 2026 - https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
 
 ### Gamma brief
 
@@ -361,9 +371,10 @@ Pull quote (italics, below the trajectory row):
   "fully give in to the vibes... forget that the code even exists"
   Attribution: Andrej Karpathy, Feb 2025 - the tweet that coined "vibe coding"
 
-Adoption footer band (small type, two lines):
+Adoption footer band (small type, three lines):
   Line 1: 4.7M paid Copilot subs (~90% of Fortune 100, Microsoft FY26 Q2) | 90% of devs use AI at work (DORA 2025) | 90%+ of software teams (McKinsey Feb 2026)
   Line 2: Frontier labs sit higher - Anthropic 70-90% company-wide; senior engineers ~100% personal workflows (Fortune Jan 2026)
+  Line 3: The board-level "why now" - AI-centric orgs report 20-40% opex reductions and 12-14pp EBITDA margin gains (CIO May 2026)
 
 Closing line (set off, bottom): The slope is the story.
 
@@ -608,6 +619,7 @@ Tone: Concrete, actionable.
 - 2026 CVEs in the AI tools themselves: **Cursor RCE** (CVE-2026-26268), **Copilot Reprompt** (CVE-2026-21516), **Claude Code CLI RCE** (CVE-2026-35021), **Windsurf MCP zero-interaction** (CVE-2026-30615)
 - **Hou et al. 2025:** 16 MCP threat scenarios spanning the lifecycle (creation, deployment, operation, maintenance)
 - **Prakash 2026 (AIP):** ~2,000 production MCP servers scanned, **all lacked authentication**
+- **Shadow AI and IP leakage:** 75%+ of knowledge workers use GenAI at work; **3 of 4 CISOs report unsanctioned GenAI tools already running** in their environment (Sysdig 2026; Aikido 2026). Prompts routinely include proprietary source code, credentials and customer data, sent to vendor LLMs without DLP coverage. Shadow-AI incidents reportedly cost ~$650K above the breach baseline.
 - **Vercel / Context AI** (Apr 20, 2026): AI-vendor breach pivots into customer environment
 
 **Graphic:** Pipeline-attack-flow diagram on the left (LiteLLM as the canonical example). 8-tile incident grid on the right with date stamps and one-line consequences. Use a consistent severity colour scheme.
@@ -621,6 +633,8 @@ The CVE tile grid lists 2026 vulnerabilities in the AI dev tools themselves. Cur
 Hou et al. 2025 is the most-cited threat-model work on MCP. They catalogue 16 attacker patterns across the full server lifecycle - tool poisoning, rug pulls, namespace typosquatting, cross-server shadowing, indirect prompt injection through retrieved data. The CISO-relevant single insight: tool descriptions are natural-language metadata that LLMs treat as authoritative, which means an attacker who controls a tool description can steer behaviour without touching the code.
 
 Prakash's AIP paper scanned approximately 2,000 production MCP servers. None used authentication. Treat that as a directional signal - the methodology is sparse - but it lines up with what every practitioner finds when they look. This is developer-side shadow IT, mostly uninstrumented, and that is the gap.
+
+The shadow-AI bullet is the present-tense version of this story for your audience. Three of four CISOs surveyed report finding unsanctioned GenAI tools running in their environment - tools their developers brought in, often with embedded credentials and OAuth scopes that plug straight into enterprise systems. Across the broader knowledge-worker population, 75%+ are using GenAI at work and a substantial fraction admit to risky data-handling. The IP-leakage angle is the one to land for a SASIG audience: every prompt your developers send to a public LLM may include proprietary source code, credentials, customer data or strategic context. Unless you have prompt-inspection at the IDE plane, you have no DLP coverage of that channel. This is happening now, in your organisation, and the financial impact reporting suggests shadow-AI incidents land roughly $650K above your standard breach baseline. We come back to the IDE-boundary control on Slide 14.
 
 Vercel and Context AI from April 2026 is the AI-vendor angle. A Lumma Stealer infection on a Context.ai employee was pivoted to a Google Workspace account, then into Vercel's environment. Customer environment variables and AI Office Suite OAuth tokens were exfiltrated and offered for USD 2M on BreachForums. The lesson: the AI tooling your build pipeline trusts is now an attack surface your supply-chain controls have to cover.
 
@@ -637,6 +651,9 @@ This layer was largely uninstrumented two years ago. We are catching up.
 - AIP MCP scan paper (Prakash 2026) - https://arxiv.org/abs/2603.24775
 - Vercel security bulletin - https://vercel.com/kb/bulletin/vercel-april-2026-security-incident
 - TechCrunch on Vercel/Context AI - https://techcrunch.com/2026/04/20/app-host-vercel-confirms-security-incident-says-customer-data-was-stolen-via-breach-at-context-ai/
+- Sysdig - "Real risks live at runtime: Why CISOs must care about deep telemetry in 2026" (3-of-4 unsanctioned GenAI stat) - https://webflow.sysdig.com/blog/real-risks-live-at-runtime-why-cisos-must-care-about-deep-telemetry-in-2026
+- Aikido - State of AI in Security & Development 2026 - https://www.aikido.dev/state-of-ai-security-development-2026
+- Netwrix - 12 Critical Shadow AI Security Risks 2026 - https://netwrix.com/en/resources/blog/shadow-ai-security-risks/
 
 ### Gamma brief
 
@@ -651,18 +668,21 @@ CVE tile grid (2026):
   - Copilot Reprompt - CVE-2026-21516
   - Claude Code CLI RCE - CVE-2026-35021
   - Windsurf MCP zero-interaction - CVE-2026-30615
-Supporting bullet:
+Supporting bullets:
   - MCP servers: developer-side shadow IT; ~2,000 production servers scanned, none authenticated (Prakash AIP 2026)
-Closing line: The pipeline runs AI tools that run AI tools. Pinning is policy.
-Visual: Pipeline-attack-flow on the left (LiteLLM as the canonical example). Small CVE tile grid on the right with date stamps and one-line consequences.
-Tone: Specifics. Names, dates, CVEs.
+  - Shadow AI / IP leakage: 75%+ of knowledge workers use GenAI; 3 of 4 CISOs find unsanctioned tools running in their environment (Sysdig 2026; Aikido 2026); prompts routinely leak proprietary code and credentials to vendor LLMs without DLP coverage
+Closing line: The pipeline runs AI tools that run AI tools - and your developers have already plugged it into your data.
+Visual: Pipeline-attack-flow on the left (LiteLLM as the canonical example). Small CVE tile grid on the right with date stamps and one-line consequences. Shadow-AI bullet sits beneath the grid as a present-tense beat.
+Tone: Specifics. Names, dates, CVEs - plus the present-tense shadow-AI reality.
 ```
 
 ---
 
 # Section 3 - What to do
 
-## Slide 14 - Tooling - PR gates, AI-asset inventory, IDE boundary
+## Slide 14 - Tooling - what a confidently AI-enabled SDLC looks like
+
+*Section opener. Reframe: the four gates are the **means** of confident AI adoption, not the destination. Section 3 is the "yes path" - here is what good looks like.*
 
 - **AI-asset & MCP-server inventory** as the precondition for every other control - you cannot scan what you cannot see (the new shadow-IT discovery problem)
 - **IDE-boundary controls** - inspect prompts, block secrets, govern context, allowlist tool calls. Hines et al. *Spotlighting* reduces prompt-injection ASR from >50% to <2%
@@ -670,11 +690,15 @@ Tone: Specifics. Names, dates, CVEs.
 - **Pin AI tool versions**; treat MCP servers as third-party dependencies subject to existing controls
 - *Pipeline-enforceable. Inventory first, then gates.*
 
-**Graphic:** Linear horizontal pipeline diagram with four labelled gates (asset inventory -> IDE boundary -> PR gate -> build gate). Use the same accent colour throughout to signal "pipeline-enforceable."
+*Footer band:* **And the defenders are evolving too** - AI-aware SAST is the new perimeter category (Snyk DeepCode, Datadog open-source AI-native SAST, DryRun, Endor Labs, Semgrep, GitHub CodeQL). Multi-agent reasoning detects business-logic and AI-specific flaws (incl. prompt injection) that pattern-based SAST misses. Fight AI with AI - the defence is moving as fast as the offence.
 
-**Speaker notes:** Section 3 walks the responses. Start with the one pipelines can do - tooling. This is the cleanest-wins category and it earns being first.
+**Graphic:** Linear horizontal pipeline diagram with four labelled gates (asset inventory -> IDE boundary -> PR gate -> build gate). Use the same accent colour throughout to signal "pipeline-enforceable." Below the pipeline, a single quiet footer band names the AI-aware SAST category as the parallel evolution of the defence.
 
-Asset inventory first. You cannot scan what you cannot see. AI-asset and MCP-server discovery is the new shadow-IT discovery problem - the same 2010s-era playbook applies, just on new asset types. Every harness, every MCP server, every model endpoint, every coding assistant has to be inventoried before any other control matters.
+**Speaker notes:** Section 3 is the "yes path." This is what a confidently AI-enabled SDLC looks like in operation - the four gates here, the human-judgment restorations on the next three slides, and AI-aware defence running in parallel. The frame for this section is not "how do we slow AI down"; it is "how do we let our developers move fast safely." The four gates are the means. The destination is a build pipeline that lets your developers use whatever AI tools they need without asking permission, because the controls are in the pipeline rather than in the gating committee.
+
+Tooling is the cleanest-wins category and it earns being first. Start with the one pipelines can do.
+
+Asset inventory first. You cannot scan what you cannot see. AI-asset and MCP-server discovery is the new shadow-IT discovery problem - the same 2010s-era playbook applies, just on new asset types. Every harness, every MCP server, every model endpoint, every coding assistant has to be inventoried before any other control matters. This is also where the shadow-AI conversation from Slide 13 comes to ground - you cannot govern prompt content, IP-leakage, or credential exposure on tools you do not know exist.
 
 IDE-boundary controls. Prompts leaving the developer endpoint should be inspectable; secrets in those prompts should be blocked; file context should be governed; tool calls should be allowlisted. Hines et al.'s Spotlighting paper is the academic anchor here - they reduce prompt-injection attack-success rate from over 50 percent to under 2 percent through delimiting, datamarking, and encoding. Applicable directly to prompt validation in the IDE plane.
 
@@ -682,29 +706,38 @@ PR gates. SAST, secret scanning, SCA on every AI-assisted PR - mandatory, fail-c
 
 Pin AI coding tool versions. Treat MCP servers as third-party dependencies subject to your existing controls. Hou et al. catalogue 57 MCP-specific threats in their full work, and Invariant Labs has demonstrated rug-pull tool poisoning where benign tool descriptions silently mutate on second launch. Real attacks, fixable with version pinning and intake review.
 
+The footer band is the move I want to land for an "enable" framing. The defence is evolving alongside the offence. The category to track is AI-aware SAST - multi-agent reasoning systems (DryRun, Snyk DeepCode, Datadog's open-source AI-native SAST, Endor Labs, Semgrep, GitHub CodeQL) that detect business-logic and AI-specific flaws including prompt injection. Pattern-based SAST is structurally insufficient against LLM-generated code; the new category exists for exactly that reason. Mention briefly - the audience hears "you can fight AI with AI."
+
 Crucially, this slide is short for a reason. Pipelines reinforce the tool layer. They cannot restore writer judgment, reviewer attention, or dependency provenance. The next three slides are what actually restores those.
 
 **Sources:**
 - Hines et al. Spotlighting - https://arxiv.org/abs/2403.14720
 - Hou et al. MCP Landscape - https://xinyi-hou.github.io/files/hou2025mcp_1.pdf
 - Invariant Labs MCP tool-poisoning / rug-pull - https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks
+- DryRun - "Top 10 AI SAST Tools for 2026" (AI-aware SAST as a new category) - https://www.dryrun.security/blog/top-ai-sast-tools-2026
+- Snyk DeepCode AI - https://snyk.io/platform/deepcode-ai/
+- Datadog open-source AI-native SAST - https://www.datadoghq.com/blog/open-source-ai-sast/
+- Endor Labs - AI Risk Reduction guide 2026 - https://www.endorlabs.com/learn/ai-risk-reduction-complete-guide-to-mitigation-strategies-for-2026
 
 ### Gamma brief
 
 ```
-Title: Tooling - PR gates, AI-asset inventory, IDE boundary
-Layout: Pipeline diagram with four labelled gates
+Title: Tooling - what a confidently AI-enabled SDLC looks like
+Subtitle: The yes path - four gates, then AI-aware defence in parallel
+Layout: Pipeline diagram with four labelled gates, plus a single footer band beneath
 Gate 1: AI-asset & MCP-server inventory
-  Caption: the new shadow IT
+  Caption: the new shadow IT - cannot govern what you cannot see
 Gate 2: IDE boundary
   Caption: Hines et al. Spotlighting reduces prompt-injection ASR from >50% to <2%
 Gate 3: PR gate (fail-closed)
   Caption: SAST + secrets + SCA on AI-assisted PRs; block hallucinated imports
 Gate 4: Build gate
   Caption: pin AI tool versions; treat MCP servers as third-party deps
-Closing line: "Inventory first, then gates."
-Visual: Linear horizontal pipeline diagram. Each gate is a vertical bar across the pipeline, annotated with the control it enforces. Use the same accent colour throughout to signal "pipeline-enforceable."
-Tone: Operational, prescriptive. The "what to actually configure" slide.
+Closing line: "Inventory first, then gates - so your developers can move fast safely."
+Footer band (single quiet line beneath the pipeline):
+  And the defenders are evolving too - AI-aware SAST is the new perimeter category (Snyk DeepCode, Datadog OSS, DryRun, Endor, Semgrep, GitHub CodeQL). Fight AI with AI.
+Visual: Linear horizontal pipeline diagram. Each gate is a vertical bar across the pipeline, annotated with the control it enforces. Use the same accent colour throughout to signal "pipeline-enforceable." A single footer band beneath the pipeline carries the AI-aware-SAST line in muted type - it is supporting context, not a fifth gate.
+Tone: Operational and enabling. The "what good looks like" slide that opens Section 3 - the means of confident AI adoption, not a list of brakes.
 ```
 
 ---
