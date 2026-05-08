@@ -1,0 +1,106 @@
+Friday 1 May, 11am-12noon (BST)
+AI tools are rocketing in popularity, and as businesses grapple with striking a balance between AI-enablement and information security, there has never been a greater need to understand exactly how your people are using AI tools.
+
+Redflags’ real-time data gives customers insights into how they are using these tools, where risk hotspots are forming and nudging them to make the secure choice; helping businesses to shape their AI governance and human risk strategies.
+
+In this session, we will share the trends we are seeing, customer use-cases and explore where the future of “human in the loop” AI governance.
+• Deep insight into how humans are using AI tools
+• Guidance on where risk hotspots are forming from colleagues’ use of AI tools
+• Ideas for AI governance policies
+• Ideas for Human Risk AI interventions
+• Key trend analysis for AI
+
+If you are a member of ISACA, ICA, CIISec or The Security Institute, you can earn CPE/CPD points for attending our webinars live. Remember to log your attendance with your provider to be credited.
+
+ 
+
+Guest chaired by
+John Scott (info), Managing Director, Wildpark Security Consultancy
+
+ 
+
+Presented by
+Tim Ward (info), CEO & Co-founder, Redflags
+
+---
+
+Wednesday 6 May 2026, 11am-12noon (BST)
+We cut through the hype to examine what works, what doesn’t and what can go catastrophically wrong when securing autonomous systems.
+
+• The Good: Proven technical and organisational safeguards that help keep AI agents under control.
+• The Bad: Critical weaknesses in today’s practices, especially around agent identity, access, and privilege management and how to strengthen them.
+• The Ugly: High-risk errors and anti-patterns that organisations must avoid at all costs to prevent runaway autonomy.
+
+This session cuts through optimism and fear alike to examine how organisations can stay in control as autonomy grows. Clear-eyed, practical and grounded in reality, this is a guide to securing AI agents before they start making decisions you can’t undo.
+
+If you are a member of ISACA, ICA, CIISec or The Security Institute, you can earn CPE/CPD points for attending our webinars live. Remember to log your attendance with your provider to be credited.
+
+ 
+
+Guest chaired by
+Mike Hughes (info), Director, Prism RA, and ISACA Central UK
+
+ 
+
+Presented by
+Florian Pouchet (info) Partner, Wavestone
+
+Kaya Raveendran (info) Manager, Wavestone
+
+ 
+
+By registering for this webinar you agree:
+
+The speakers’ organisations may use your details to enhance your experience and email you further information of interest. Please see our Privacy Policy for further details. 
+To follow the standard of behaviour set out in SASIG’s Safe Space Charter. 
+
+---
+
+Monday 8 June 2026, 11am-12noon (BST)
+New findings from Pentera’s AI Security & Exposure Survey 2026 reveal a critical blind spot: While AI adoption is widespread, most organisations lack the skills to secure it, have limited visibility into where AI is deployed, and rely on legacy security controls not designed for AI-driven workflows. Most concerning, many still have unclear or undefined approaches to AI security testing.
+
+As a result, AI-driven connections across data, identity, and infrastructure remain exposed in ways that attackers can exploit.
+
+In this session, Mark and Siraaj explore the benchmark findings and what they mean for our community. We will:
+• Break down the methodology and key findings from 300 CISOs
+• Share examples of how AI security gaps translate into exploitable risk
+• Demonstrate how adversarial testing helps security teams validate AI risk
+
+If you are a member of ISACA, ICA, CIISec or The Security Institute, you can earn CPE/CPD points for attending our webinars live. Remember to log your attendance with your provider to be credited.
+
+ 
+
+Guest chaired by
+Mike Hughes (info) Director, Prism RA, and ISACA Central UK
+
+ 
+
+Presented by
+Mark Davis (info) Senior Director, Pentera
+
+Siraaj Ahmed (info) Regional Manager, Pentera
+
+---
+
+Wednesday 10 June 2026, 11am-12noon (BST)
+Threats are evolving faster than traditional defences and even with AI, many organisations are still struggling to keep up. In 2026, “good” security isn’t about more tools, it’s about faster, smarter decisions.
+This session explores how a continuous feedback loop, powered by real user-reported threats, transforms everyday attacks into actionable intelligence, creating a security model that improves with every incident.
+
+We’ll cover:
+1. How user-reported threats become real-time, actionable intelligence
+2. Why employees are a critical, active layer of your defence system, not the weakest link
+3. How human insight and decision-making strengthen security outcomes
+
+Your people are not the weakest link, they’re your most adaptive control. When their insights drive decisions, security becomes faster, smarter and more resilient.
+
+If you are a member of ISACA, ICA, CIISec or The Security Institute, you can earn CPE/CPD points for attending our webinars live. Remember to log your attendance with your provider to be credited.
+
+ 
+
+Guest chaired by
+Kurt Yearwood (info), Supply Chain Security Assurance Officer, BAE Systems
+
+ 
+
+Presented by
+James Hickey (info), Principal Sales Engineer, Cofense

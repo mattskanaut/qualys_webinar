@@ -9,6 +9,10 @@
 
 ## OPENING (30 seconds)
 
+Thank you Abhinav.
+
+Now I'd like to show you some of the great new features he talked about.
+
 So, many of you will already be using ETM, and certainly VMDR, and understand what TruRisk scoring brings to the table when it comes
 to prioritising based on real exploitability rather than raw CVSS base scores.
 
@@ -19,8 +23,8 @@ asking right now is: how do we bring that same TruRisk-driven,
 risk-prioritised approach into these cloud-native environments?
 
 That's what I want to walk you through today, the full journey with cloud and container, from discovery through to risk assessment and 
-to remediation, all within the Qualys platform, and all of is supported by our suite of autonomous AI agents.  Qualys moving from 
-a vital tool to your key sec ops collaborator.
+to remediation, by your sec ops, cloud teams and developers, all within the Qualys platform, or using Qualys tools, and all supported by our suite of autonomous AI agents.  Qualys is moving from being a vital tool, 
+to your key sec ops collaborator.
 
 ---
 
@@ -31,15 +35,32 @@ a vital tool to your key sec ops collaborator.
 **Key talking points (before/during video):**
 
 Let's start with a problem I know every one of you has, because
-I see it in pretty much every customer engagement I do: unscanned
-assets, blind spots, cloud accounts that were spun up by a dev team
-somewhere and never properly onboarded into your security programme.
+we see it in so many customer engagements: security blind spots, particularly in your cloud environments.
 
 Agent Vikram is our dedicated cloud security AI agent, and this is
-exactly the problem it solves. Rather than relying on those manual
-processes to find and onboard cloud assets, Vikram works
+exactly the problem it solves. Vikram works
 autonomously, continuously monitoring your multi-cloud
-environment for exposure gaps and closing them by configuring agentless scans or deploying assets to your cloud resources.
+environment for exposure gaps and surfacing that information for you
+
+Vikram provides coverage statistics, giving you an "at a glance" view of your cloud vulnerability programme, with more detail to download when needed.
+
+And then allows you to dig deeper.
+
+
+
+Let's understand better our unscanned assets, and the factors that lead to increased risk, in this case, public exposure.
+
+Vikram guides you through the analysis of the assets, and suggests actions you can take to improve your visibility.
+
+In this case Vikram has identified cloud assets in a non running state, meaning no agent can be installed, but suggests another option, to make use of our snapshot scanning capability.
+
+
+
+
+
+
+
+and closing them by configuring agentless scans or deploying assets to your cloud resources.
 
 **[PAUSE video at statistics screen]**
 
