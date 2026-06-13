@@ -1,0 +1,7 @@
+Your business just shipped an AI feature. What exactly are you defending and how? Prompt injection, model supply chain attacks, agent identity sprawl and AI tooling buried inside vendor platforms are all rewriting what “production security” means. Most enterprises are inventing the discipline as they go.
+
+We’ll work through what to inventory, what to test, what to govern and the questions you should be putting to your teams before the next launch.
+
+This session is designed for security and engineering leaders who need clarity before the next release, not after the incident report. Join us to ground your thinking, sharpen your questions and equip yourself to make confident decisions as AI moves from experiment to core infrastructure.
+
+This is the second in a two-part series, so make sure to catch up on the first part here, if you’ve not already done so.
