@@ -525,53 +525,63 @@ exactly where we go next.
 
 ON SLIDE: (chart) ref arxiv.org/pdf/2603.15714
 
-SPEAKER NOTES (existing - AI-assisted register, callback opener edited; flagged
-to rewrite in Matt's own voice):
+SPEAKER NOTES (v4 - warmed into Matt's voice; numbers verified, see sources note):
 
-So - remember right at the start, with the Salesforce one, I said the
-instructions and the data come down the same channel and the model can't reliably
-tell them apart. That's the attack surface we keep coming back to. The immediate
-pushback to that - and your engineers will make it - is "fair, but the models are
-trained to resist injection, and they're getting better at it, so isn't that
-enough?" This slide exists to answer that one question: how much is the model's
-own resistance actually worth? Because if you can lean on it, half of what I'll
-recommend later is wasted effort. So let's put a number on it.
+So, let's actually answer that question we just landed on. How much is the
+model's own resistance to this worth? Because it really matters, if you can
+genuinely lean on the model to defend itself, then honestly half of what I'm
+going to recommend later is wasted effort. So let's try and put an actual number
+on it.
 
-The number comes from a competition run by Gray Swan with the US AI Safety
-Institute at NIST and the UK's AI Safety Institute - government-backed, not a
-vendor marking its own homework. Thirteen frontier models, opened to the public,
-464 people attacking them: about 272,000 attempts. Each bar is the Attack Success
-Rate for one model - the share of attacks that landed, that got the model to do
-what the attacker wanted instead of what it was meant to do. Lower is better.
+And we can, because there's some good data here. This comes from a competition
+run by Gray Swan, together with CAISI, that's the US standards body, and the UK's
+own AI Safety Institute. So this is government-backed, it's not a vendor marking
+its own homework. And it's the right kind of attack too, it's indirect prompt
+injection against proper agents, so instructions hidden in the data the agent
+reads, which is exactly the thing we've been talking about. They put thirteen of
+the frontier models up, opened it to the public, and had 464 people attacking
+them, racking up around 272,000 attempts between them. Each bar on the chart is
+the attack success rate for one model, so the share of attacks that actually
+landed, that got the model to do what the attacker wanted instead of what it was
+supposed to do. So lower is better here.
 
-There's a real spread - the most robust, Claude Opus, at about half a percent;
-the most vulnerable, a top-tier Gemini, up around eight and a half. So models
-genuinely differ.
+And there's a real spread. The most robust on the day was Claude Opus, down at
+about half a percent. The most vulnerable, Gemini 2.5 Pro, up at eight and a
+half. So the models genuinely do differ, this isn't all the same.
 
-The ranking follows capability within Claude's own range - Opus more robust than
-Sonnet, Sonnet more than Haiku - and that makes sense: the resistance is trained
-in, and the flagship inherits the most of it. But don't read it as "buy the
-cleverest model and you're safe." It only holds inside one vendor's family.
-Across vendors it breaks - that top-tier Gemini was the most capable model in the
-field and the most attackable, more exposed than the smallest Claude. Robustness
-comes from how hard the maker trained the model to resist, not from how clever it
-is.
+Now here's the bit I find genuinely interesting, and a bit counterintuitive. You
+might assume the cleverer, more capable model is the safer one. It isn't. The
+researchers found robustness barely tracked capability at all. The clearest
+example is that Gemini, which was about the most capable model in the whole field,
+and also the most attackable one on the board. So robustness comes from how hard
+the maker actually worked to train the thing to resist, it is not something you
+get for free by buying the cleverest model.
 
-But here's the answer to our question: there is no bar at zero. All thirteen were
-successfully attacked - and there never will be a zero, because a model resists
-injection the way a trained person resists being fooled: pattern-recognition, not
-a firewall. Good, but never certain.
+But here's the real answer to our question. Look along the bottom, there's no bar
+at zero. Every single one of the thirteen got successfully attacked. And there
+never will be a zero, because a model resists this stuff the way a well-trained
+person resists being conned, it's pattern recognition, it's not a firewall. It's
+good, but it's never a certainty.
 
-And Opus's half a percent sounds reassuring until you remember it's per attempt.
-Attackers don't go once; they go over and over, and the successes just accumulate
-- they never level off. Half a percent per attempt becomes a near-certainty given
-enough goes. We come back to that shortly.
+And even that half a percent for Opus, which sounds reassuring, remember that's
+per attempt. And attackers don't have one go and wander off, they go again and
+again and again, and the successes just stack up, they never level off. So half a
+percent an attempt quietly becomes a near certainty if someone's determined
+enough to keep going.
 
-So, back to the question we opened with - can you rely on the model's own
-resistance? You can pick a more robust one, and you should. But you cannot rely
-on it, because every model on the board can be turned, and the surface stays open
-whichever you choose. Which is why the answer isn't "pick a better model" - it's
-"stop relying on the model to defend itself."
+So, back to where we started, can you rely on the model's own resistance? You can
+pick a more robust one, and you absolutely should. But you can't rely on it,
+because every model up there can be turned, and the door stays open whichever one
+you pick. Which is why the answer was never "pick a better model", it's "stop
+asking the model to defend itself in the first place", and start building the
+defences around it. And that's what the rest of the session is really about.
+
+SOURCES (verified June 2026): Gray Swan Indirect Prompt Injection Arena, Q1 2026
+(ran 25 Feb - 11 Mar 2026), run with CAISI + UK AISI. 13 models, 464
+participants, 272,000 attempts, 8,648 successful attacks across 41 scenarios. ASR
+range 0.5% (Claude Opus 4.5) to 8.5% (Gemini 2.5 Pro); no model at zero;
+robustness only weakly correlated with capability. arXiv 2603.15714; NIST/CAISI
+research blog.
 
 ---
 
@@ -585,46 +595,52 @@ permissions. Zero Review: OX Security submitted a malicious package to 11
 AI-tool registries; 9 published it with zero review. A supply chain you didn't
 build, can't see, and nobody's vetting.
 
-SPEAKER NOTES (existing):
+SPEAKER NOTES (v4 - warmed into Matt's voice; numbers verified, see sources note):
 
-So far, the attacks we've looked at all work the same way - by manipulating the
-AI. A clever prompt, a poisoned input; and on the last slide, just how little the
-model itself resists that. Now I want to turn it around, because there's a
-simpler attack that needs no cleverness at all. Why bother tricking the model
-into misbehaving, when you can just hand it the malicious code and let it run
-that for you?
+So, every attack we've looked at so far works the same basic way, by manipulating
+the AI. A clever prompt, a poisoned bit of input, and on that last slide, just how
+little the model itself really resists that. Now I want to flip it round, because
+there's a much simpler attack that needs no cleverness at all. Why go to all the
+trouble of tricking the model into misbehaving, when you can just hand it the
+malicious code and let it run that for you?
 
-And that's possible because of something that's grown up around agents very fast
-- marketplaces of "skills" you install to give an agent new abilities, and
-registries of MCP servers you plug in. It's a whole new software supply chain,
-with almost none of the security maturity something like an app store built up
-over fifteen years.
+And that's possible because of something that's sprung up around agents incredibly
+fast. There are now whole marketplaces of "skills" you install to give an agent
+new abilities, and registries of MCP servers you plug in. It's a whole new
+software supply chain, really, except without any of the security maturity that
+something like a phone app store has built up over fifteen-odd years.
 
-Researchers at Koi Security - big thanks to them - audited one of these skill
-marketplaces. Of the roughly two thousand eight hundred skills on it, three
-hundred and forty-one were outright malicious - about one in eight. And these
-weren't theoretical; they were shipping a real credential stealer, going after
-browser logins, SSH keys, crypto wallets.
+So, researchers at Koi Security, big thanks to them, went and audited one of these
+skill marketplaces. And of the two thousand eight hundred odd skills on it, three
+hundred and forty-one came back outright malicious. That's about one in eight. And
+these weren't proof-of-concept, hypothetical things, they were shipping a real
+credential stealer, going after browser logins, SSH keys, cloud credentials, the
+lot.
 
 Now, the reason this is worse than a dodgy app store is what a skill actually is.
-It isn't something the agent just reads - it's instructions and scripts the agent
-runs, on your machine, with your agent's permissions. So a malicious skill isn't
-a vulnerability someone has to find and exploit; it's just code, and your agent
-runs it the moment it's used.
+It isn't something the agent just reads and thinks about, it's instructions and
+scripts the agent runs, on your machine, with your agent's permissions. So a
+malicious skill isn't a vulnerability that someone first has to find and then
+exploit, it's just code, and your agent runs it the moment it goes to use it.
 
-And you can't lean on the marketplace to catch it. A separate team, OX Security,
-took a deliberately malicious package and submitted it to eleven of these
-registries to see who'd stop them - nine of the eleven published it, with no
-review at all.
+And you can't really lean on the marketplace to catch this for you either. A
+separate team, OX Security, took a deliberately malicious package and submitted it
+to eleven of these registries, just to see who'd stop them. Nine of the eleven
+published it, no review at all.
 
-So the point of this one's fairly simple. It's got nothing to do with whether
-your model is clever or gullible. You've wired your agents to a supply chain you
-didn't build and nobody's checking - and you almost certainly couldn't list
-what's plugged in. That list, and treating all of it as untrusted, is where
-defending an agent has to start.
+So the point of this one's pretty simple really. It's got nothing to do with
+whether your model's clever or gullible. You've wired your agents up to a supply
+chain you didn't build and nobody's checking, and you almost certainly couldn't
+tell me right now what's plugged in. And that, having that list, and then treating
+everything on it as untrusted until it's proven otherwise, is where defending an
+agent actually has to start.
 
-NB: notes above are present in the deck. (You had marked 9 onward as draft - this
-one already has prose; treat as existing, polish in your voice.)
+SOURCES (verified June 2026): Koi Security "ClawHavoc" audit (Jan-Feb 2026) - 341
+of 2,857 skills malicious (~11.9%, ~1 in 8); infostealer payloads targeting
+browser cookies, .env files, SSH keys and cloud credentials (count has since grown
+past 800 as the marketplace expanded). OX Security MCP supply-chain advisory
+(Apr 2026) - benign PoC package accepted with no review by 9 of 11 registries.
+koi.ai blog; ox.security blog.
 
 ---
 
