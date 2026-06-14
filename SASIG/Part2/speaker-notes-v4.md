@@ -78,7 +78,11 @@ Also, like last time, no doubt your organisations will be grappling with these i
 ## DISPLAY 2 - It's already out there
 
 ON SLIDE: 99% of organisations already run autonomous AI agents in production
-(Palo Alto Networks 2026 Identity Security Landscape). 83% plan agentic AI, yet
+(Palo Alto Networks 2026 Identity Security Landscape).
+  CORRECTION (verified 2026-06-14): the figure is 91%, NOT 99%. Palo Alto's 2026
+  Identity Security Landscape reports 91% run autonomous agents in production. The
+  deck's "99%" is an error - change the on-slide number to 91%.
+83% plan agentic AI, yet
 only 29% feel ready to secure it (Cisco, 2026). 62% name security as #1 blocker,
 ahead of technical limits at 38% (McKinsey via Stanford AI Index 2026). Live
 poll: "Has someone in your organisation shipped an AI feature you did not know
@@ -377,10 +381,16 @@ accepted with no review by 9 of 11 registries. koi.ai blog; ox.security blog.
 
 ON SLIDE: Deck heading "THE DISCIPLINE IS BEING WRITTEN NOW" / sub-head "You are
 not inventing this alone any more". Quote: "If you cannot understand, monitor or
-contain an agent's actions, it is not ready for deployment" (attributed on slide
-to Five Eyes, Apr 2026). Four bodies that converged within ~12 months:
+contain an agent's actions, it is not ready for deployment".
+  QUOTE ATTRIBUTION FIX (verified 2026-06-14): the deck credits this to "Five
+  Eyes, Apr 2026", but it is NOT in the joint Five Eyes PDF (30 Apr 2026). It is
+  verbatim from the UK NCSC companion blog "Thinking carefully before adopting
+  agentic AI" (Martin R & Dr Kate S, NCSC, 15 May 2026:
+  https://www.ncsc.gov.uk/blogs/thinking-carefully-before-adopting-agentic-ai).
+  Change the on-slide source line to "UK NCSC, May 2026".
+Four bodies that converged within ~12 months:
 - Five Eyes - "Careful Adoption of Agentic AI Services", FIVE governments
-  (UK/US/AU/CA/NZ). [deck now correctly says five, not six]
+  (UK/US/AU/CA/NZ; joint guidance PDF 30 Apr 2026). [deck now correctly says five]
 - CoSAI - "The Future of AI Agent Security" + "Agentic Identity and Access
   Management" (two RSAC 2026 publications).
 - OWASP - Agentic Top 10 (published Dec 2025; presented at Infosec Europe, Jun 2026).
@@ -468,123 +478,214 @@ is a strong discovery-spine stat - consider relocating it here to open the
 
 ## DISPLAY 12 - Identity: agents are first-class identities  (was DISPLAY 15)
 
-ON SLIDE: Highest-leverage control. The answer to "you cannot stop them" is: make
-every agent stoppable by design. With machine/AI identities outnumbering humans
-109:1, shared service accounts are no longer acceptable. (1) A named human owner -
-no owner, no agent in production. (2) Its own credential - per-agent, enabling
-attribution/revocation/audit (Entra Agent ID). (3) Task-scoped, just-in-time
-access - blast radius bounded by design. (4) A rehearsed kill switch - a control
-plane, tested quarterly (CoSAI blueprint). 60% cannot terminate a misbehaving
-agent today.
+ON SLIDE (REVISED 2026-06-14 to align with CoSAI Agentic IAM + Five Eyes "Careful
+adoption of agentic AI services"; deck edits pending copy-in):
+- Eyebrow: HIGHEST-LEVERAGE CONTROL
+- Title: Identity: agents are first-class identities
+- Thesis: Make every agent accountable by design: a first-class identity you can
+  scope, attribute, and contain.
+- Sub-line: With machine/AI identities outnumbering humans 109:1, shared service
+  accounts are no longer acceptable.
+- Box 1 - Its own identity: A distinct, cryptographically-anchored credential per
+  agent - never a shared service account. A shared token is an untraceable,
+  impersonable agent. Now a platform feature in Entra Agent ID.
+- Box 2 - Task-scoped, just-in-time access: Permissions granted at task start,
+  revoked at completion. No standing privilege, so the blast radius is bounded by
+  design, not by luck.
+- Box 3 - Attributable actions: Every action logged to the agent's own identity
+  and the authority it acted under. You can reconstruct who did what, and on whose
+  behalf, on demand.
+- Box 4 - A rehearsed kill switch: A control plane outside the agent, not a button
+  - able to auto-restrict it the moment its behaviour looks wrong. Test it like any
+  incident-response procedure, including whether the agent can disable it.
+- Bottom line: 60% of organisations cannot terminate a misbehaving agent today.
+  No identity, no off switch.
+- Sources: CoSAI Agentic IAM (2026); Five Eyes, Careful adoption of agentic AI
+  services (2026).
 
-SPEAKER NOTES (draft 2026-06-14, Matt's voice - APPROVED, pending copy-in to deck):
+CHANGE FROM PRIOR: dropped the "named human owner" box (it moves to DISPLAY 14
+Governance, where it already appears - removes the double-owner overlap) and added
+"Attributable actions" (CoSAI imperative #6 "prove control on demand" + the Five
+Eyes accountability section - the biggest gap previously). Thesis reframed from
+"stoppable by design" to "accountable by design". Boxes ordered who-it-is ->
+what-it-can-do -> what-it-did -> how-to-stop-it.
 
-So, identity. If you take one practical thing from this whole second half, I'd want it to be this one, which is why it's flagged there as the highest-leverage control. And it's the answer to the most uncomfortable problem sitting under everything we've looked at, that an agent acts on its own, at machine speed, and if it gets something wrong, whether it's been tricked into it or it's just made a daft call by itself, you need to be able to step in and stop it. So the whole game on this slide is making every agent stoppable by design.
+SPEAKER NOTES (rewritten 2026-06-14, Matt's voice - APPROVED, pending copy-in;
+5-click build: box1, box2, box3, box4, bottom):
 
-And the way you do that isn't new either, it's identity, the thing I flagged right back on the layers slide as the new perimeter. What's changed is the scale. Machine and AI identities already outnumber human ones by something like a hundred and nine to one, and that's only heading one way. At that scale, the old habit of letting a handful of agents share some catch-all service account is finished, because the moment you do, you've lost any hope of knowing which agent did what. So, four things, and you already run every one of them for your people.
+So, identity, and this is the one I'd circle if you take a single practical thing away from this whole second half, which is why it's flagged there as the highest-leverage control. And it's worth saying this is exactly where both those references point, the Five Eyes guidance and the CoSAI work. The CoSAI lot put it plainly, that without a trustworthy identity for each agent, none of your other controls can really be enforced.
+
+And the problem they're all circling isn't really "the agent might misbehave", it's deeper than that. Once you've got agents acting on their own, and acting on behalf of other people, and calling other agents, you lose the thread of who actually did what, and on whose authority. You can't hold a thing to account if you can't even tell it apart, and you can't control what you can't identify. So the shift here, simple to say, is to stop treating an agent as some anonymous bit of automation and start treating it as a first-class identity, the same way you would a member of staff.
+
+And the reason that matters more by the day is scale. Machine and AI identities already outnumber human ones by something like a hundred and nine to one. At that scale the old shortcut, a handful of agents quietly sharing one service account, is finished, because the moment they share an identity you've lost any hope of telling them apart.
 
 [CLICK - box 1]
 
-First, a named human owner. An actual person accountable for what that agent does, what it's allowed to touch, and how long it lives. No owner, no production, simple as that.
+So, four things, and I'll say up front, you already do every one of these for your people, this is just your existing identity discipline pointed at agents. First, give each agent its own identity, its own credential, never a shared one. And the reason that's not just tidiness is impersonation, if a token is shared, or static, or sat somewhere it can be lifted, then an attacker operating under it is simply an untraceable agent. The Five Eyes guidance is blunt about this, they say identity is every bit as important as privilege. And the platforms are catching up, Microsoft's Entra now has agent identities built in.
 
 [CLICK - box 2]
 
-Second, its own credential, no sharing, ever. Because a unique identity per agent is the only thing that gives you real attribution, the ability to revoke just the one without taking everything else down with it, and a clean audit trail. And this is becoming a platform feature now, Microsoft's Entra has agent identities built in.
+Second, scope what it can do to the task in front of it, and grant that just in time. Permissions handed over when the job starts, taken straight back the moment it's done, so there's no standing pile of access sitting around waiting to be abused. This is the single most repeated point across both documents, least privilege, no standing privilege, and it's what keeps the blast radius small by design rather than by luck.
 
 [CLICK - box 3]
 
-Third, access that's scoped to the task and granted just in time, handed over when the job starts and taken straight back the moment it's finished, so the blast radius is bounded by design rather than by luck.
+Third, and this is the one I think most people skip, make every action attributable. Because the agent acted on its own, you need to be able to go back afterwards and say, hand on heart, which agent did this, and whose authority was it acting under. CoSAI call this proving control on demand, and the Five Eyes guidance gives accountability a whole section of its own, on how easily that thread gets lost when one agent hands off to another. If you can't reconstruct it, you've no real audit, no incident response, and frankly no answer when the regulator asks.
 
 [CLICK - box 4]
 
-And fourth, a rehearsed kill switch, and I'd really lean on the word rehearsed, because a kill switch you've never tested is a hope, not a control. Think of it as a control plane rather than one big red button, and tabletop it quarterly the same way you'd rehearse any other incident. CoSAI have published a blueprint for building exactly this.
+And fourth, a kill switch, and I'd stress the word tested, because one you've never tried is a hope, not a control. Think of it as a control plane that sits outside the agent, not a big red button, able to throttle or pull it the moment its behaviour starts to look wrong, and for the worst cases firing automatically, because a human in the loop is often too slow. And you genuinely have to test that it works, the same as any incident-response procedure, and here's the unnerving bit, test whether the agent can disable it, because in shutdown experiments models have already learned to sabotage their own off switch. Which is exactly the fail-safe, stop-and-escalate thinking the government guidance leans on.
 
 [CLICK - bottom line]
 
-And here's why all of this actually bites. Today, around sixty percent of organisations admit they could not terminate a misbehaving agent right now, if they had to. So this isn't theoretical tidiness. But notice none of those four is exotic, it's named owners, individual credentials, least privilege, and a tested way to pull the plug, every one of them something you already know how to do. The shift is just insisting they apply to your agents too. If a thing can act in your environment, it has to be an identity you can name, scope, and stop. And once it is, you've finally got something you can hold to account, which leads us straight into how you make sure it's actually behaving.
+And here's where it bites. Today, around sixty percent of organisations admit they could not actually terminate a misbehaving agent if they had to. No identity, no off switch, it really is that simple. But notice, not one of those four things is exotic, it's a named identity, least privilege, an audit trail, and a way to pull the plug, all of it stuff you already know how to do. The work is just insisting it applies to your agents too. Get that right and you've turned an agent from something you're quietly hoping behaves into something you can account for and control. And being able to account for it leads us straight into the next question, how do you actually know it's behaving, which is where we go next.
 
-PROVENANCE (the four rules): synthesis of CoSAI "Agentic Identity and Access
-Management" (RSAC 2026; per-agent identity, named owner(s), JIT task-scoped
-access, kill switch) + the industry "four pillars" consensus (ownership / JIT /
-kill switch / distinct identity) + Microsoft Entra Agent ID (per-agent credential
-as a platform feature). Stats: 60% cannot terminate = Kiteworks; 109:1 = Palo
-Alto. NOTE: not a verbatim quote from one document - CoSAI frames it as nine
-imperatives and asks for TWO named humans (sponsor + owner). Attribute as "drawn
-from CoSAI + emerging consensus", not "CoSAI's four rules". Also: the on-slide
-'answer to "you cannot stop them"' callback lost its setup slide (parked) - the
-notes above re-establish that point so it still lands.
+PROVENANCE: the slide is a distillation of CoSAI "Agentic Identity and Access
+Management" (20 Mar 2026) and the Five Eyes "Careful adoption of agentic AI
+services" (Apr 2026), both read in full. Map: Box 1 = CoSAI #1 first-class
+identity + Five Eyes "distinct principal / own keys"; Box 2 = CoSAI #2 zero
+standing privilege + Five Eyes least-privilege/JIT; Box 3 = CoSAI #6 "prove
+control on demand" + Five Eyes Accountability section; Box 4 = Five Eyes fail-safe
+defaults / trigger-action restriction + CoSAI revocation. Stats: 60% cannot
+terminate = Kiteworks; 109:1 = Palo Alto.
+BOX 4 CORRECTION (rigorous re-check 2026-06-14): "tested quarterly" REMOVED - that
+cadence is in NEITHER CoSAI nor Five Eyes (Five Eyes only says "develop and test
+incident response procedures"; generic IR guidance puts the baseline at annual,
+quarterly only for high-risk - so stating it flat was over-claiming). Replaced
+with grounded kill-switch detail: a control plane OUTSIDE the agent runtime (not a
+button); pre-authorized AUTOMATIC containment for worst cases (human-in-loop too
+slow); and test it like any IR procedure INCLUDING whether the agent can disable
+it - models sabotaged their own shutdown in 79/100 tests. Sources: Stanford Law
+"Kill switches don't work if the agent writes the policy" (Mar 2026); CSA NIST AI
+RMF Agentic Profile; agentic-IR runbook guidance (Waxell/Rafter); Five Eyes
+fail-safe/stop-and-escalate. This also ties to DISPLAY 13's "test whether it can
+bypass your own defences".
+EARLIER CORRECTIONS: there is NO "four pillars" industry standard (one SC Media
+article - struck); the "two named humans (sponsor + owner)" detail was a secondary
+blog, NOT the CoSAI paper. "Named human owner" now lives on DISPLAY 14 (Governance).
 
 ---
 
-## DISPLAY 13 - Process: red-team as launch criteria  (was DISPLAY 16)
+## DISPLAY 13 - Testing doesn't stop at go-live  (was DISPLAY 16; REFRAMED 2026-06-14 from "red-team as launch criteria")
 
-ON SLIDE: Static ASR numbers from vendors are not a security posture. If you did
-not attack it, you have not tested it. (1) Red-team your own models - prompt
-injection against deployed systems; Garak, PyRIT, AgentDojo; a launch gate not an
-annual tick. (2) Scan your MCP attack surface - tool poisoning, excessive scope,
-missing auth. Red-teaming now runs at agent speed (681 assessments in ~3 hours,
-Dreadnode 2026). AI-aware IR playbooks; kill-switch tabletops quarterly.
+ON SLIDE (reworked to a continuous, whole-lifecycle activity; deck edits pending):
+- Eyebrow: PROCESS
+- Title: Testing doesn't stop at go-live
+- Thesis: A test you run once at launch is out of date within weeks - the model
+  updates, the tools change, the attackers adapt. So it can't be a one-off gate;
+  it has to be ongoing.
+- What you test: the agentic attack surface - prompt injection, tool and MCP
+  abuse, over-broad permissions, memory poisoning, one agent pivoting to another.
+- Practice "In your build pipeline": Run the attacks automatically on every
+  release and gate on the result, so a change that makes the system easier to
+  attack doesn't ship.
+- Practice "On a regular cadence": You often won't know when something's changed -
+  a hosted model can update under you - so schedule it like any other security
+  scan, rather than waiting for a trigger.
+- Practice "Against your own defences, in production": Don't just attack the agent
+  - check whether it can get past the guardrails, monitoring and human approvals
+  you've put around it.
+- Closing: So treat it like the rest of your security testing: something you run
+  on a regular cadence, not a gate you pass once.
+- Visual: the three practices on a continuous loop. No vendor/product names
+  (non-product); generic tooling only.
 
-SPEAKER NOTES (draft 2026-06-14, Matt's voice - APPROVED, pending copy-in to deck):
+SPEAKER NOTES (rewritten 2026-06-14, Matt's voice - APPROVED, pending copy-in;
+clicks: what-you-test, then one per practice):
 
-So, you've discovered your estate, you've built the architecture around it, and you've given every agent an identity you can name and stop. The obvious next question is, how do you actually know any of it works? And the honest answer is the same one we landed on at the lab-conditions slide, you don't, not until you've attacked it yourself.
+So, we've discovered the estate, built the architecture around it, and given every agent an identity we can account for and contain. The obvious next question, and it's the one this slide is about, is how do you actually know any of it works? And the honest answer is the same one we hit on the lab-conditions slide, you don't, not until you've attacked it yourself.
 
-Because think back to that Gray Swan chart, every one of those frontier models had a published safety story, and every single one of them still fell. So a number a vendor hands you, an attack success rate from their own testing, is genuinely useful, but it is not your security posture. It was measured on their system, against their attacks, not yours. The only number that means anything is the one you get attacking your own deployment. Or, the way it's put up there, if you didn't attack it, you haven't tested it.
+But here's the bit I really want to land, because it's where a lot of organisations slip. They treat this as a one-off, a test you pass before go-live and then tick the box. And that doesn't hold, because a test you ran once is out of date within weeks. The model gets updated, often by the vendor without telling you, the tools it can reach change, somebody widens a permission, and the attackers are adapting the whole time. So a clean result in the spring tells you very little by the autumn. This can't be a gate you pass once, it has to be something that just keeps running.
 
 [CLICK]
 
-So, two practices, and neither is new to anyone in this room, we've been doing this to web apps for twenty years, this is just pointing the same discipline at AI. The first is to red-team your own models, actually run prompt injection attacks against the system you've deployed, the way a real attacker would. There's a decent open toolkit for it now, things like Garak, PyRIT and AgentDojo, and the key shift is to make this a launch gate, something a system has to pass before it goes live, not an annual tick-box you do once and file away.
+And what you're testing for is that attack surface we've been building up all session, prompt injection, the tools and MCP servers being abused, permissions that are too broad, the memory getting poisoned, one agent being used to pivot to another. That's the target list.
 
 [CLICK]
 
-The second is to scan your MCP attack surface, and this is the supply chain from earlier coming back round, every MCP server and every skill you've plugged in, checked for tool poisoning, for permissions that are far too broad, for missing authentication. Same cadence, continuously, not once.
+So, where does it run. First, in your build pipeline. Wire the attacks into your release process so they run automatically, every time, and gate on the result, so a change that quietly makes the thing easier to attack doesn't get shipped in the first place. It's the same idea as the security testing you already gate releases on, just pointed at the agent. And the cost excuse has gone, by the way, there's published work running something like six hundred adversarial assessments in about three hours, so the tooling can absolutely keep up.
 
 [CLICK]
 
-And the reason it has to be continuous is speed. The attackers are operating at machine speed now, and the good news is so can your testing, there's work showing red-team tooling running something like six hundred assessments in a matter of hours. So the principle is simple, your evaluation cadence has to match your deployment cadence, if you ship weekly you test weekly. Alongside that, make sure your incident response actually knows what an AI incident looks like, memory poisoning, an agent gone rogue, a compromised vendor model, those aren't the playbooks you wrote for ransomware. And rehearse that kill switch we just talked about, quarterly, so it's muscle memory before you ever actually need it.
+Second, and this matters because of what I said about the model changing under you, run it on a regular cadence as well. You often won't know the moment something's changed, a hosted model can be updated with no announcement at all, so you can't sit and wait for a trigger, you schedule it, exactly like any other security scan you run across the estate.
 
-So that's the operating rhythm that keeps everything else honest. But controls and testing on their own won't survive contact with a busy organisation, things drift, people leave, budgets move. And that's where the last piece comes in, governance.
+[CLICK]
 
-NOTE (parked deck fix): on-slide text says "as Slide 10 demonstrated" - that
-reference pointed at the old infra slide (now parked) and is broken. The spoken
-notes above instead reference the Gray Swan / lab-conditions slide (DISPLAY 8) by
-name; the ON-SLIDE text still needs the same fix. TO VERIFY: Dreadnode "681
-assessments in ~3 hours" (notes soften to "~600 in a matter of hours").
+And third, the one people miss. Don't just attack the agent itself, test whether it can get past the defences you've wrapped around it, the guardrails, the monitoring, the human approval steps. Because an agent that can quietly talk its way around your own controls is a very different problem from one that can't, and the only way you find that out is by trying it. That one's straight out of the Five Eyes guidance, as it happens.
+
+So, none of this is really new, it's the security testing discipline you already have, run continuously and aimed at the agent rather than the web app. The thing to take away is that it's a cadence, not a gate, you run it on a schedule for as long as the system is live. And keeping all that running, and being able to prove you're keeping it running, is really a governance question, which is where we go next.
+
+GROUNDING: NIST AI RMF (continuous test-and-evaluation across the lifecycle);
+OWASP Gen AI / Agentic Red Teaming (continuous, in CI/CD); Five Eyes "Careful
+adoption" (Operating section - regular security assessments incl. pen test + red
+team; Performance monitoring - "assess an agent's ability to bypass safeguards:
+guardrails, monitors, human-in-the-loop, input filters"). NIST's "re-test after
+model/config change" is reframed to "regular cadence" because hosted models change
+silently. Dreadnode 681/~3hrs (arXiv:2605.04019) verified - kept in notes, off the
+slide. REMOVED as confected (not in any source): "quarterly kill-switch tabletops"
+and "red-team after an incident". The old "as Slide 10 demonstrated" mispointer is
+resolved - the reworked thesis no longer cross-references a slide.
 
 ---
 
 ## DISPLAY 14 - Governance: anchor, owner, measure  (was DISPLAY 17)
 
-ON SLIDE: Controls without governance have no durability. Anchor: ISO/IEC 42001
-today; ISO/IEC 27090 at final draft; EU AI Act transparency Aug 2026, high-risk
-Dec 2027; Annex IV maps to an AI-BOM. Owner: a named human against every
-inventory entry - no owner, no production. Measure: report upwards - ASR per
-category, blast radius per agent, shadow-AI exposure (employee AI use tripled to
-45%, DBIR 2026). Translate metrics into pounds and owners.
+ON SLIDE (REWORKED 2026-06-14 after re-reading the governance frameworks; deck
+edits pending):
+- Eyebrow: GOVERNANCE
+- Title: Governance: anchor, owner, measure
+- Thesis: Controls without governance don't last - people leave, budgets move,
+  and the rigour quietly slips. Governance is what makes the rest of this stick.
+- Anchor: Build on a recognised framework rather than inventing one - NIST AI RMF
+  and ISO 42001, with ISO 27090 at final draft. The EU AI Act adds a clock:
+  transparency from August 2026, high-risk from December 2027 - and its Article 11
+  documentation is really an AI bill of materials, so the inventory you built is
+  what the regulator will ask for.
+- Owner: Every entry in that inventory needs a named human against it - NIST and
+  ISO both require it - and no owner means no production. It's also what makes your
+  kill switch usable: someone has to be accountable for pulling it.
+- Measure: Report up regularly, in the board's language: how much of your estate
+  is actually under governance, what it would cost in pounds if it went wrong, and
+  your shadow-AI exposure (employee AI use roughly tripled to 45% in a year).
+  Report it in money and named owners rather than attack-success rates.
+- Closing: Anchor it, own it, measure it - that's what stops everything else
+  quietly decaying.
 
-SPEAKER NOTES (draft 2026-06-14, Matt's voice - APPROVED, pending copy-in to deck):
+CHANGE FROM PRIOR: added NIST AI RMF to Anchor (was missing - it's the recognised
+framework the Five Eyes guidance references); tightened "Annex IV -> AI-BOM" to
+"Article 11 documentation = AI bill of materials" (CycloneDX ML-BOM); SWAPPED the
+Measure metrics from technical (ASR per category / blast radius per agent) to the
+board set (governance coverage, financial exposure, shadow-AI); grounded Owner in
+"NIST + ISO both require it". Optional fourth beat available: AI literacy (EU AI
+Act Article 4, in force since Feb 2025).
 
-So, governance, and I know the word makes some people's eyes glaze over, but stay with me, because this is the bit that stops everything we've just covered quietly falling apart six months after you've built it. Controls without governance have no durability, the rigour slips, things drift, and you're back where you started. So, three simple pillars, and the real value of them is that they translate all this technical work into language a board actually responds to.
+SPEAKER NOTES (rewritten 2026-06-14, Matt's voice - APPROVED, pending copy-in;
+clicks: one per pillar):
+
+So, governance, and I can feel some of you switching off already, because it's the least glamorous word in security. But stay with me, because this is the bit that decides whether everything we've just talked about is still standing in six months, or whether it's quietly fallen apart. Controls without governance don't last, people move on, budgets get cut, the rigour slips, and you're back where you started. So, three simple things, and the real value of them is they turn all this technical work into something a board can actually act on.
 
 [CLICK]
 
-First, anchor it to a standard, so you're not just making it up as you go. ISO 42001 is there today for managing AI, and 27090, the AI security one I mentioned earlier, is at final draft, so start getting familiar with it now. And there's a clock on this, the EU AI Act, its transparency obligations land this August, and the high-risk ones at the end of next year, and crucially its Annex IV documentation maps more or less directly onto an AI bill of materials. Which is that inventory from the discovery slide coming full circle, the list you built isn't just operational hygiene, it's the thing the regulator is going to ask you for, so far better to be building it now than in a panic later.
+First, anchor it, and the good news is you don't have to invent the framework. There are two recognised ones to build on, NIST's AI Risk Management Framework and ISO 42001, with a third, ISO 27090, the AI security one, coming up behind at final draft. Pick one and align to it, so you're standing on something other people have already thought hard about. And there's a clock running underneath all this, the EU AI Act, its transparency obligations land this August, the high-risk ones at the end of next year, and here's the bit worth knowing, its Article 11 documentation is, in practice, an AI bill of materials. Which is that inventory from the discovery slide coming round again, the list you built isn't just good housekeeping, it's the thing the regulator is going to ask you for, so far better to be building it now than scrambling for it later.
 
 [CLICK]
 
-Second, owner. Now we said back on the identity slide that every agent needs a named human against it, and this is simply the governance side of that exact same coin. At the technical level, an owner is what makes your kill switch usable. At the board level, it's accountability, a real person whose name is against that system. And the rule is just as blunt, no owner, no production. That isn't bureaucracy, it's the thing that makes every other control actually enforceable.
+Second, owner. We touched this on the identity slide, every agent needs a named human against it, and this is simply the governance side of that same coin. And I'm not just asserting it, both NIST and ISO require it. The rule is blunt, and I'd keep it blunt, if there's no named owner, it doesn't go into production. That isn't bureaucracy for its own sake, it's the thing that makes every other control actually work, because your kill switch is useless if nobody's accountable for deciding to pull it.
 
 [CLICK]
 
-And third, measure, because the board can't act on what it can't see. Report a handful of things upward, and regularly, your attack success rates by category, the blast radius each agent could cause if it went wrong, and your shadow AI exposure, and that last one is very real, employee AI use roughly tripled in a year, to something like forty-five percent. But here's the important part, don't report it in attack success rates and CVE numbers, translate it into pounds, and into named owners, because that's the language the board makes decisions in. Do that, and you've turned all of this from the security team's private worry into something the business actively manages.
+And third, measure, because the board can't act on what it can't see. Report a handful of things up, regularly, and in their language rather than ours. How much of your AI estate is actually under governance, and be honest about that number. What it would cost you, in pounds, if one of these went wrong. And your shadow AI exposure, which is very real, employee use of AI roughly tripled in a year, to something like forty-five percent. And the important part, don't hand the board attack success rates and CVE numbers, translate it into money and into named people, because that's the language they make decisions in. Do that, and you've turned all of this from the security team's private worry into something the business actively owns.
 
-And getting it measured, and spoken about in the boardroom's own language, sets up the very last thing I want to leave you with, which is, genuinely, good news.
+So, anchor it, own it, measure it. That's what stops everything we've built quietly decaying the moment your back is turned. And getting it measured, and talked about in the boardroom's own language, sets up the very last thing I want to leave you with, which is, genuinely, good news.
 
-TO VERIFY: EU AI Act dates (transparency Aug 2026 / high-risk end-2027); DBIR 2026
-"shadow AI tripled to ~45%". Both carried from v3, not re-checked this session.
-NOTE: "owner" is deliberately framed as the governance side of the DISPLAY 12
-owner (resolves the double-owner overlap); "AI-BOM = inventory full circle" pays
-off the DISPLAY 11 discovery promise.
+GROUNDING (re-read 2026-06-14): NIST AI RMF (Govern function - designated
+ownership; Measure function) + ISO/IEC 42001 (AI management system; "each agent
+needs a defined owner, bounded scope, explicit lifecycle") are the recognised
+anchors; both require a named owner. ISO 27090 at FDIS. EU AI Act: transparency
+2 Aug 2026, high-risk deferred to 2 Dec 2027 (Digital Omnibus); Article 11 / Annex
+IV technical documentation = functionally an AI-BOM (CycloneDX ML-BOM). Measure
+metrics (governance coverage, financial exposure, shadow-AI) from board-reporting
+guidance; DBIR 2026 shadow AI 15%->45% verified. "Owner" = governance side of the
+DISPLAY 12 owner; "AI-BOM = inventory" pays off DISPLAY 11 discovery.
 
 ---
 
