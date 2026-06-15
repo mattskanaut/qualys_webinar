@@ -592,27 +592,25 @@ ON SLIDE (reworked to a continuous, whole-lifecycle activity; deck edits pending
 SPEAKER NOTES (rewritten 2026-06-14, Matt's voice - APPROVED, pending copy-in;
 clicks: what-you-test, then one per practice):
 
-So, we've discovered the estate, built the architecture around it, and given every agent an identity we can account for and contain. The obvious next question, and it's the one this slide is about, is how do you actually know any of it works? And the honest answer is the same one we hit on the lab-conditions slide, you don't, not until you've attacked it yourself.
-
-But here's the bit I really want to land, because it's where a lot of organisations slip. They treat this as a one-off, a test you pass before go-live and then tick the box. And that doesn't hold, because a test you ran once is out of date within weeks. The model gets updated, often by the vendor without telling you, the tools it can reach change, somebody widens a permission, and the attackers are adapting the whole time. So a clean result in the spring tells you very little by the autumn. This can't be a gate you pass once, it has to be something that just keeps running.
+So, we've discovered the estate, built the architecture, and given every agent an identity we can account for. The obvious next question is, how do you actually know any of it works? And the honest answer, same as the lab-conditions slide, is you don't, not until you've attacked it yourself. And the trap is treating that as a one-off, a test you pass before go-live and tick the box, because a test you ran once is stale within weeks, the model updates, often without telling you, the tools change, the attackers keep adapting. So it can't be a gate you pass once, it has to keep running.
 
 [CLICK]
 
-And what you're testing for is that attack surface we've been building up all session, prompt injection, the tools and MCP servers being abused, permissions that are too broad, the memory getting poisoned, one agent being used to pivot to another. That's the target list.
+What you're testing for is that attack surface we've been building all session, prompt injection, tools and MCP servers being abused, over-broad permissions, poisoned memory, one agent pivoting to another.
 
 [CLICK]
 
-So, where does it run. First, in your build pipeline. Wire the attacks into your release process so they run automatically, every time, and gate on the result, so a change that quietly makes the thing easier to attack doesn't get shipped in the first place. It's the same idea as the security testing you already gate releases on, just pointed at the agent. And the cost excuse has gone, by the way, there's published work running something like six hundred adversarial assessments in about three hours, so the tooling can absolutely keep up.
+So, where does it run. First, in your build pipeline, automatically on every release, gating the result so a change that makes the thing easier to attack doesn't ship, the same as the security testing you already gate on. And the cost excuse has gone, there's work running six hundred-odd adversarial assessments in about three hours.
 
 [CLICK]
 
-Second, and this matters because of what I said about the model changing under you, run it on a regular cadence as well. You often won't know the moment something's changed, a hosted model can be updated with no announcement at all, so you can't sit and wait for a trigger, you schedule it, exactly like any other security scan you run across the estate.
+Second, on a regular cadence as well, because you often won't know the moment something's changed, a hosted model can update with no announcement at all, so you schedule it like any other security scan rather than waiting for a trigger.
 
 [CLICK]
 
-And third, the one people miss. Don't just attack the agent itself, test whether it can get past the defences you've wrapped around it, the guardrails, the monitoring, the human approval steps. Because an agent that can quietly talk its way around your own controls is a very different problem from one that can't, and the only way you find that out is by trying it. That one's straight out of the Five Eyes guidance, as it happens.
+And third, the one people miss, don't just attack the agent, test whether it can get past your own guardrails, monitoring and approvals, because one that can quietly talk its way around your controls is a very different problem, and trying it is the only way you find out. That's straight out of the Five Eyes guidance.
 
-So, none of this is really new, it's the security testing discipline you already have, run continuously and aimed at the agent rather than the web app. The thing to take away is that it's a cadence, not a gate, you run it on a schedule for as long as the system is live. And keeping all that running, and being able to prove you're keeping it running, is really a governance question, which is where we go next.
+So none of this is really new, it's the security testing you already do, run continuously and pointed at the agent. A cadence, not a gate, for as long as the system's live, and being able to prove you keep it running is really a governance question, which is where we go next.
 
 GROUNDING: NIST AI RMF (continuous test-and-evaluation across the lifecycle);
 OWASP Gen AI / Agentic Red Teaming (continuous, in CI/CD); Five Eyes "Careful
